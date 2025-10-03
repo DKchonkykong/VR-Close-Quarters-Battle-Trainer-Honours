@@ -80,3 +80,6 @@ crashlytics-build.properties
 !/.gitignore
 !/Assets
 !/ProjectSettings
+!VR CQB Trainer.sln
+!/UserSettings
+!/Logs
