@@ -213,6 +213,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 170486227}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &207147541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8527930359412827274, guid: eb91affb984e740dbb2082626ba96efb,
+    type: 3}
+  m_PrefabInstance: {fileID: 871771919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +982,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
@@ -1107,7 +1113,7 @@ MonoBehaviour:
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
-  m_Model: {fileID: 8848131633249631744, guid: eb91affb984e740dbb2082626ba96efb, type: 3}
+  m_Model: {fileID: 207147541}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
@@ -1756,14 +1762,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638879918}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17949022, y: -0, z: -0, w: 0.98375976}
+  m_LocalRotation: {x: -0.015643511, y: 0.98001647, z: -0.17880607, w: -0.085740365}
   m_LocalPosition: {x: 0.8122, y: -0.85800004, z: 10.012523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1090905962}
   m_Father: {fileID: 1945811288}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.68, y: 190, z: 0}
 --- !u!1 &640466181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1834,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456931167}
   m_LocalEulerAnglesHint: {x: -190, y: 0, z: -180}
+--- !u!4 &773190230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9197307595999089453, guid: a2e8ee2005c074447b929af42b7f5068,
+    type: 3}
+  m_PrefabInstance: {fileID: 1753334427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,7 +1957,7 @@ PrefabInstance:
     - target: {fileID: 1644074631896904345, guid: eb91affb984e740dbb2082626ba96efb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8848131633249631744, guid: eb91affb984e740dbb2082626ba96efb,
         type: 3}
@@ -2032,13 +2044,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090905961}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0.06162845, y: 0.70441604, z: -0.06162845, w: 0.70441604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 638879924}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -180, y: 270, z: -190}
 --- !u!1 &1187260116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,7 +2657,7 @@ PrefabInstance:
     - target: {fileID: 8913381912547908116, guid: a2e8ee2005c074447b929af42b7f5068,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3486,7 +3498,7 @@ MonoBehaviour:
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
-  m_Model: {fileID: 7111071080452410799, guid: a2e8ee2005c074447b929af42b7f5068, type: 3}
+  m_Model: {fileID: 773190230}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
