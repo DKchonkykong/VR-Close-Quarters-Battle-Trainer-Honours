@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -101,5 +102,10 @@ public class GunXR : MonoBehaviour
         var mag = currentMag;
         currentMag = null;
         mag.Eject(worldImpulse);
+    }
+
+    internal void EjectPressed()
+    {
+        EjectMag();
     }
 }
