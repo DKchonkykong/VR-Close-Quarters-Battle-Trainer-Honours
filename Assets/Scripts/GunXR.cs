@@ -108,4 +108,9 @@ public class GunXR : MonoBehaviour
     {
         EjectMag();
     }
+
+    internal void FirePressed()
+    {
+        TryFire();
+    }
 }
