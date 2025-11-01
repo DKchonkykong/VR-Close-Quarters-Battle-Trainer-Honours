@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -22,53 +22,103 @@ public class GunXR : MonoBehaviour
     [Header("State (read-only)")]
     public MagazineXR currentMag;
     float _nextFireTime;
+    [Header("Slide / joint")]
+    public SlideJointXR slide;      // assign the slide object here
+    public bool slideLocked;        // for debug
 
-    void OnEnable()
+    // call this from input: fire
+    public void FirePressed()
     {
-        if (magSocket)
+        if (slideLocked)
         {
-            magSocket.selectEntered.AddListener(OnSocketSelected);
-            magSocket.selectExited.AddListener(OnSocketDeselected);
+            Debug.Log("[GunXR] Slide locked, can't fire");
+            return;
+        }
+
+        if (currentMag == null || currentMag.currentRounds <= 0)
+        {
+            Debug.Log("[GunXR] Dry");
+            // play dry sound
+            return;
+        }
+
+        currentMag.currentRounds--;
+        Debug.Log("[GunXR] Bang. Ammo left: " + currentMag.currentRounds);
+
+        // do hitscan etc...
+
+        // if now empty → lock slide
+        if (currentMag.currentRounds <= 0 && slide != null)
+        {
+            slideLocked = true;
+            slide.LockSlideOpen();
+            Debug.Log("[GunXR] Slide locked OPEN (empty)");
         }
     }
 
-    void OnDisable()
+    // this is called BY THE SLIDE when user pulled it far and released
+    public void OnSlideCharged()
     {
-        if (magSocket)
+        // called by SlideJointXR when player pulled it far and released
+        if (currentMag != null && currentMag.currentRounds > 0)
         {
-            magSocket.selectEntered.RemoveListener(OnSocketSelected);
-            magSocket.selectExited.RemoveListener(OnSocketDeselected);
+            slideLocked = false;
+            if (slide != null)
+                slide.UnlockSlide();
+            Debug.Log("Slide charged, gun ready.");
         }
-    }
+        else
+        {
+            Debug.Log("Slide charged but no ammo in mag.");
+        }
 
-    // === Socket callbacks (magazine inserted/removed) ===
-    void OnSocketSelected(SelectEnterEventArgs args)
-    {
-        var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
-        if (!mag) return;
-        OnMagazineInserted(mag);
-    }
+        void OnEnable()
+        {
+            if (magSocket)
+            {
+                magSocket.selectEntered.AddListener(OnSocketSelected);
+                magSocket.selectExited.AddListener(OnSocketDeselected);
+            }
+        }
 
-    void OnSocketDeselected(SelectExitEventArgs args)
-    {
-        var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
-        if (!mag) return;
-        OnMagazineRemoved(mag);
+        void OnDisable()
+        {
+            if (magSocket)
+            {
+                magSocket.selectEntered.RemoveListener(OnSocketSelected);
+                magSocket.selectExited.RemoveListener(OnSocketDeselected);
+            }
+        }
+
+        // === Socket callbacks (magazine inserted/removed) ===
+        void OnSocketSelected(SelectEnterEventArgs args)
+        {
+            var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
+            if (!mag) return;
+            OnMagazineInserted(mag);
+        }
+
+        void OnSocketDeselected(SelectExitEventArgs args)
+        {
+            var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
+            if (!mag) return;
+            OnMagazineRemoved(mag);
+        }
     }
 
     // Called by socket OR by MagazineXR when it detects socket selection
+    // when mag is inserted
     public void OnMagazineInserted(MagazineXR mag)
     {
         currentMag = mag;
-        if (audioSource && insertClip) audioSource.PlayOneShot(insertClip);
-        // You could chamber a round here if you simulate that separately.
-        // e.g., roundsInChamber = Mathf.Min(1, currentMag.currentRounds--);
+        Debug.Log("[GunXR] Mag inserted: " + mag.currentRounds);
+        // NOTE: we do NOT auto-unlock slide here — user must rack it
     }
 
     public void OnMagazineRemoved(MagazineXR mag)
     {
-        if (currentMag == mag) currentMag = null;
-        if (audioSource && ejectClip) audioSource.PlayOneShot(ejectClip);
+        if (currentMag == mag)
+            currentMag = null;
     }
 
     // === Public API ===
@@ -107,10 +157,5 @@ public class GunXR : MonoBehaviour
     internal void EjectPressed()
     {
         EjectMag();
-    }
-
-    internal void FirePressed()
-    {
-        TryFire();
     }
 }
