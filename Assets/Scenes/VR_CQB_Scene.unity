@@ -551,6 +551,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 456931181}
+    - targetCorrespondingSourceObject: {fileID: 100006, guid: b812e42521a5a27499e76cc5ed56e3ac,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456931184}
   m_SourcePrefab: {fileID: 100100000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
 --- !u!4 &456931167 stripped
 Transform:
@@ -903,8 +907,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 456931176}
-  fireAction: {fileID: 0}
+  fireAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
   ejectAction: {fileID: 0}
+--- !u!95 &456931184
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53066914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &487324549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6f966b9a7c817ed49973b4a8762cbbdf,
