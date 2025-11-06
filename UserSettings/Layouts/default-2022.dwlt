@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 16
+  controlID: 102
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 17
+  controlID: 43
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 18
+  controlID: 44
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/_Course Library/Audio/FX
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -386,16 +386,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/_Course Library/Audio/FX
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\ady\Documents\GitHub\VR-Close-Quarters-Battle-Trainer-Honours
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 179}
-    m_SelectedIDs: e87e0000
-    m_LastClickedID: 32488
-    m_ExpandedIDs: 00000000587d00005a7d00005c7d00005e7d0000607d0000627d0000647d0000e47e00004882000000ca9a3b
+    scrollPos: {x: 0, y: 239}
+    m_SelectedIDs: 70820000
+    m_LastClickedID: 33392
+    m_ExpandedIDs: 00000000ba7f0000bc7f0000be7f0000c07f0000c27f0000c47f0000c67f0000c87f0000ca7f0000448100007282000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000587d00005a7d00005c7d00005e7d0000607d0000627d0000647d0000
+    m_ExpandedIDs: 00000000ba7f0000bc7f0000be7f0000c07f0000c27f0000c47f0000c67f0000c87f0000ca7f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 107}
     m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 172
@@ -565,23 +565,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 4ae5fcffeee5fcff18eafcff08f5fcffacf5fcffdaf9fcfff43bfdff9a3cfdffe440fdffcc51fdff7052fdff9a56fdff1062fdffb462fdffde66fdff0491fdffa891fdffee95fdff7e0bfeff220cfeff6410feffd240feffe64bfeff8a4cfeffb450feffe677feff8a78feffb47cfeffdeddfeff84defeffd0e2feff2066ffffc466ffff0a6bfffffefaffff2afbffff7a7500000a9d00008e9d0000049e000088a90000fea90000daad000050ae0000a6b1000018b2000028b2000052b200009eb200006ebb0000eebb000004bc00002abc00006ebc00007abc0000a2bc0000d6c9000056ca000070ca0000e6ca000006d20000a0d2000016d3000098d6000012d7000018d7000032d70000a8d70000a0db0000cadb000040dc0000c4df00005ee00000d4e00000
+      m_SelectedIDs: 94900000
+      m_LastClickedID: 37012
+      m_ExpandedIDs: 24a1ffffeca1ffff32a6ffff2ceeffff2eeeffff167700007c770000d877000010900000b49000002a910000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Slide
-        m_OriginalName: Slide
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 48110
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -974,9 +974,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.008115, y: 0.22581317, z: -0.08186359}
+    m_Target: {x: 0.9076049, y: 0.2548434, z: -0.053066503}
     speed: 2
-    m_Value: {x: 1.008115, y: 0.22581317, z: -0.08186358}
+    m_Value: {x: 0.9076049, y: 0.2548434, z: -0.053066503}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1022,13 +1022,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08854546, y: -0.73474246, z: 0.097792454, w: -0.6653776}
+    m_Target: {x: -0.067533985, y: -0.6858432, z: 0.06419091, w: -0.7217425}
     speed: 2
-    m_Value: {x: -0.08754825, y: -0.7348966, z: 0.09669134, w: -0.6655172}
+    m_Value: {x: -0.066452116, y: -0.68594754, z: 0.06316291, w: -0.7218522}
   m_Size:
-    m_Target: 0.113388
+    m_Target: 0.14652006
     speed: 2
-    m_Value: 0.113388
+    m_Value: 0.14652006
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -1,161 +1,144 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class GunXR : MonoBehaviour
 {
-    [Header("References")]
-    public XRSocketInteractor magSocket;     // socket child on the grip
-    public Transform muzzle;                 // optional: where bullets would spawn
-
-    [Header("Eject")]
-    public Vector3 ejectImpulseLocal = new Vector3(0f, 0.8f, 0.2f);
+    [Header("Refs")]
+    public XRSocketInteractor magSocket;
+    public Transform muzzle;
+    public LayerMask hitMask = ~0;
+    public AudioSource audioSource;
+    public AudioClip fireClip, dryClip, insertClip, ejectClip;
 
     [Header("Fire")]
-    public float fireCooldown = 0.12f;       // seconds between shots
-    public AudioSource audioSource;
-    public AudioClip fireClip;
-    public AudioClip dryClip;
-    public AudioClip insertClip;
-    public AudioClip ejectClip;
+    public float fireCooldown = 0.12f;
+    public float maxRange = 100f;
 
-    [Header("State (read-only)")]
+    [Header("Slide (no joint)")]
+    public SlideConstrainedZ slide;
+    public float blowbackDist = 0.01f;   // small back kick
+    public float blowbackBackTime = 0.05f;
+    public float blowbackForwardTime = 0.08f;
+
+    [Header("State")]
     public MagazineXR currentMag;
-    float _nextFireTime;
-    [Header("Slide / joint")]
-    public SlideJointXR slide;      // assign the slide object here
-    public bool slideLocked;        // for debug
+    bool slideLocked = false;
+    float nextFire;
 
-    // call this from input: fire
+    void OnEnable()
+    {
+        if (magSocket)
+        {
+            magSocket.selectEntered.AddListener(a => {
+                currentMag = a.interactableObject.transform.GetComponent<MagazineXR>();
+                if (audioSource && insertClip) audioSource.PlayOneShot(insertClip);
+            });
+            magSocket.selectExited.AddListener(a => {
+                if (currentMag && a.interactableObject.transform.GetComponent<MagazineXR>() == currentMag)
+                    currentMag = null;
+                if (audioSource && ejectClip) audioSource.PlayOneShot(ejectClip);
+            });
+        }
+    }
+
     public void FirePressed()
     {
-        if (slideLocked)
-        {
-            Debug.Log("[GunXR] Slide locked, can't fire");
-            return;
-        }
-
-        if (currentMag == null || currentMag.currentRounds <= 0)
-        {
-            Debug.Log("[GunXR] Dry");
-            // play dry sound
-            return;
-        }
-
-        currentMag.currentRounds--;
-        Debug.Log("[GunXR] Bang. Ammo left: " + currentMag.currentRounds);
-
-        // do hitscan etc...
-
-        // if now empty → lock slide
-        if (currentMag.currentRounds <= 0 && slide != null)
-        {
-            slideLocked = true;
-            slide.LockSlideOpen();
-            Debug.Log("[GunXR] Slide locked OPEN (empty)");
-        }
-    }
-
-    // this is called BY THE SLIDE when user pulled it far and released
-    public void OnSlideCharged()
-    {
-        // called by SlideJointXR when player pulled it far and released
-        if (currentMag != null && currentMag.currentRounds > 0)
-        {
-            slideLocked = false;
-            if (slide != null)
-                slide.UnlockSlide();
-            Debug.Log("Slide charged, gun ready.");
-        }
-        else
-        {
-            Debug.Log("Slide charged but no ammo in mag.");
-        }
-
-        void OnEnable()
-        {
-            if (magSocket)
-            {
-                magSocket.selectEntered.AddListener(OnSocketSelected);
-                magSocket.selectExited.AddListener(OnSocketDeselected);
-            }
-        }
-
-        void OnDisable()
-        {
-            if (magSocket)
-            {
-                magSocket.selectEntered.RemoveListener(OnSocketSelected);
-                magSocket.selectExited.RemoveListener(OnSocketDeselected);
-            }
-        }
-
-        // === Socket callbacks (magazine inserted/removed) ===
-        void OnSocketSelected(SelectEnterEventArgs args)
-        {
-            var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
-            if (!mag) return;
-            OnMagazineInserted(mag);
-        }
-
-        void OnSocketDeselected(SelectExitEventArgs args)
-        {
-            var mag = (args.interactableObject as XRBaseInteractable)?.transform.GetComponent<MagazineXR>();
-            if (!mag) return;
-            OnMagazineRemoved(mag);
-        }
-    }
-
-    // Called by socket OR by MagazineXR when it detects socket selection
-    // when mag is inserted
-    public void OnMagazineInserted(MagazineXR mag)
-    {
-        currentMag = mag;
-        Debug.Log("[GunXR] Mag inserted: " + mag.currentRounds);
-        // NOTE: we do NOT auto-unlock slide here — user must rack it
-    }
-
-    public void OnMagazineRemoved(MagazineXR mag)
-    {
-        if (currentMag == mag)
-            currentMag = null;
-    }
-
-    // === Public API ===
-
-    /// <summary>Try to fire one shot. Returns true if a round was consumed.</summary>
-    public bool TryFire()
-    {
-        if (Time.time < _nextFireTime) return false;
+        if (Time.time < nextFire) return;
+        if (slideLocked) return;
 
         if (currentMag == null || currentMag.currentRounds <= 0)
         {
             if (audioSource && dryClip) audioSource.PlayOneShot(dryClip);
-            _nextFireTime = Time.time + 0.12f;
-            return false;
+            nextFire = Time.time + 0.1f;
+            return;
         }
 
         currentMag.currentRounds--;
-        _nextFireTime = Time.time + fireCooldown;
+        nextFire = Time.time + fireCooldown;
 
-        // TODO: spawn projectile / hitscan, play VFX/SFX, recoil, haptics, slide animation
         if (audioSource && fireClip) audioSource.PlayOneShot(fireClip);
 
-        return true;
+        // hitscan
+        Vector3 o = muzzle ? muzzle.position : transform.position;
+        Vector3 d = muzzle ? muzzle.forward : transform.forward;
+        if (Physics.Raycast(o, d, out RaycastHit hit, maxRange, hitMask, QueryTriggerInteraction.Ignore))
+            Debug.DrawLine(o, hit.point, Color.red, 0.15f);
+
+        // blowback animation (moves slide along local Z briefly)
+        if (slide) StartCoroutine(BlowbackConstrained());
+
+        // empty → lock
+        if (currentMag.currentRounds <= 0)
+            slideLocked = true;
     }
 
-    /// <summary>Eject the currently inserted magazine (if any).</summary>
-    public void EjectMag()
+    IEnumerator BlowbackConstrained()
     {
-        if (!currentMag) return;
-        Vector3 worldImpulse = transform.TransformDirection(ejectImpulseLocal);
-        var mag = currentMag;
-        currentMag = null;
-        mag.Eject(worldImpulse);
+        var tr = slide.transform;
+        var parent = slide.parentSpace ? slide.parentSpace : tr.parent;
+        var lp0 = parent.InverseTransformPoint(tr.position);
+        float backZ = lp0.z - blowbackDist; // assume back is negative Z
+
+        // go back
+        float t = 0f;
+        while (t < blowbackBackTime)
+        {
+            t += Time.deltaTime;
+            var lp = lp0; lp.z = Mathf.Lerp(lp0.z, backZ, t / blowbackBackTime);
+            tr.position = parent.TransformPoint(lp);
+            yield return null;
+        }
+        // return
+        t = 0f;
+        while (t < blowbackForwardTime)
+        {
+            t += Time.deltaTime;
+            var lp = lp0; lp.z = Mathf.Lerp(backZ, lp0.z, t / blowbackForwardTime);
+            tr.position = parent.TransformPoint(lp);
+            yield return null;
+        }
+        tr.position = parent.TransformPoint(lp0);
     }
 
-    internal void EjectPressed()
+    // called by SlideConstrainedZ when player pulled far enough & released
+    public void OnSlideCharged()
     {
-        EjectMag();
+        if (currentMag && currentMag.currentRounds > 0)
+            slideLocked = false; // gun armed again
+    }
+
+    public void EjectPressed()
+    {
+        if (!magSocket || !magSocket.hasSelection) return;
+        var io = magSocket.firstInteractableSelected;
+        magSocket.interactionManager.SelectExit(magSocket, io);
+    }
+
+    internal void OnMagazineInserted(MagazineXR magazineXR)
+    {
+        if (magazineXR == null) return;
+
+        // Link gun <-> mag
+        currentMag = magazineXR;
+        magazineXR.currentGun = this;
+        magazineXR.isInserted = true;
+
+        // Ensure ammo counts are sane
+        magazineXR.currentRounds = Mathf.Clamp(magazineXR.currentRounds, 0, Mathf.Max(0, magazineXR.maxRounds));
+    }
+
+    internal void OnMagazineRemoved(MagazineXR magazineXR)
+    {
+        if (magazineXR == null) return;
+
+        // If this mag was our active mag, clear it
+        if (currentMag == magazineXR)
+            currentMag = null;
+
+        // Unlink gun <-> mag
+        magazineXR.currentGun = null;
+        magazineXR.isInserted = false;
     }
 }
