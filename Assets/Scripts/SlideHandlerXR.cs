@@ -8,18 +8,34 @@ public class SlideHandleXR : MonoBehaviour
 
     XRGrabInteractable grab;
 
-    void Awake() { grab = GetComponent<XRGrabInteractable>(); }
+    void Awake() 
+    { 
+        grab = GetComponent<XRGrabInteractable>(); 
+    }
 
     void OnEnable()
     {
+        if (!grab) return;
+
         grab.selectEntered.AddListener(OnGrab);
         grab.selectExited.AddListener(OnRelease);
-        grab.movementType = XRBaseInteractable.MovementType.VelocityTracking;
+        
+        // Critical: Set movement type so the slide doesn't move the whole gun
+        grab.movementType = XRBaseInteractable.MovementType.Kinematic;
         grab.throwOnDetach = false;
+        
+        // Prevent the slide from moving its transform - rail handles positioning
+        grab.trackPosition = false;
+        grab.trackRotation = false;
+        
+        // Make sure it's not trying to parent to the hand
+        grab.retainTransformParent = true;
     }
 
     void OnDisable()
     {
+        if (!grab) return;
+        
         grab.selectEntered.RemoveListener(OnGrab);
         grab.selectExited.RemoveListener(OnRelease);
     }
