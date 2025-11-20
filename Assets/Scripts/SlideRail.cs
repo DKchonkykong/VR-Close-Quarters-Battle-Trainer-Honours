@@ -24,6 +24,11 @@ public class SlideRail : MonoBehaviour
     bool locked;      // set by GunXR when empty
     bool pulledEnoughThisGrab;
 
+    // Public getter for visual feedback
+    public float CurrentProgress => t;
+    public bool IsGrabbed => grabbingHand != null;
+    public bool IsLocked => locked;
+
     void Reset()
     {
         // simple auto-wiring if placed on the gun
