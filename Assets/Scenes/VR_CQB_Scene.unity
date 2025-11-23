@@ -362,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 233803284}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0311, z: 0.06337266}
+  m_LocalPosition: {x: 0, y: 0.0204, z: 0.06337266}
   m_LocalScale: {x: 1.1122, y: 1.0901, z: -0.34007022}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -383,7 +383,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 855075492}
   m_Colliders:
-  - {fileID: 233803287}
+  - {fileID: 1072735836}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -565,7 +565,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
@@ -743,9 +743,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_Name
@@ -755,9 +763,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_Name
@@ -775,9 +791,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -826,6 +850,10 @@ PrefabInstance:
     - target: {fileID: 400006, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1261,7 +1289,7 @@ MonoBehaviour:
   idleColor: {r: 0.5, g: 0.8, b: 1, a: 0.3}
   hoverColor: {r: 0.3, g: 0.6, b: 1, a: 0.5}
   grabbedColor: {r: 0.1, g: 0.4, b: 1, a: 0.7}
-  railWidth: 0.005
+  railWidth: 0.52
   lineSegments: 20
 --- !u!120 &456931189
 LineRenderer:
@@ -1271,7 +1299,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53066914}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2277,7 +2305,7 @@ Transform:
   m_GameObject: {fileID: 565429424}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00808692, z: 0.0692}
+  m_LocalPosition: {x: 0, y: 0.00808692, z: 0.0099}
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2748,7 +2776,7 @@ Transform:
   m_GameObject: {fileID: 787166262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0004, z: -0.0001}
+  m_LocalPosition: {x: 0, y: -0.0085, z: -0.0001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2773,7 +2801,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.030452985, y: 0.09331197, z: 0.09728289}
+  m_Size: {x: 0.030452985, y: 0.07, z: 0.09728289}
   m_Center: {x: 0, y: -0.043713737, z: 0.048285827}
 --- !u!1 &832575517
 GameObject:
@@ -3028,7 +3056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072735835}
   - component: {fileID: 1072735836}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SlideCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4089,7 +4117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1964602098
 Transform:
   m_ObjectHideFlags: 0
@@ -4117,11 +4145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f810800f98e2a1440a16d7c96185c107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideRail: {fileID: 0}
+  slideRail: {fileID: 456931185}
   idleColor: {r: 0.5, g: 0.8, b: 1, a: 0.3}
   hoverColor: {r: 0.3, g: 0.6, b: 1, a: 0.5}
   grabbedColor: {r: 0.1, g: 0.4, b: 1, a: 0.7}
-  railWidth: 0.005
+  railWidth: 0.32
   lineSegments: 20
 --- !u!120 &1964602100
 LineRenderer:
@@ -4144,7 +4172,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 883b51d7f702a457e914d827f896d06d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4213,7 +4241,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -4224,7 +4252,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &2033681188
