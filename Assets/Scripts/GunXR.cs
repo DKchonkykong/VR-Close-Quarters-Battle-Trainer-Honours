@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class GunXR : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class GunXR : MonoBehaviour
     public MagazineXR currentMag;
     bool slideLocked = false;
     float nextFire;
+    public LineRenderer bulletLine;
+    public float lineDuration = 0.05f;   // fade quickly
 
     void OnEnable()
     {
@@ -70,17 +74,10 @@ public class GunXR : MonoBehaviour
 
         if (audioSource && fireClip) audioSource.PlayOneShot(fireClip);
 
-        // Hitscan
-        Vector3 o = muzzle ? muzzle.position : transform.position;
-        Vector3 d = muzzle ? muzzle.forward : transform.forward;
-        if (Physics.Raycast(o, d, out RaycastHit hit, maxRange, hitMask, QueryTriggerInteraction.Ignore))
-        {
-            Debug.DrawLine(o, hit.point, Color.red, 0.15f);
-            // You could apply damage here if you have a target component.
-        }
-
         // Slide blowback
         slide?.DoBlowback();
+
+        DoHitscan();
 
         // Lock slide if mag now empty
         if (currentMag.currentRounds <= 0)
@@ -89,6 +86,45 @@ public class GunXR : MonoBehaviour
             slide?.SetLocked(true);
         }
     }
+    void DoHitscan()
+    {
+        if (!muzzle) return;
+
+        Ray ray = new Ray(muzzle.position, muzzle.forward);
+        RaycastHit hit;
+
+        Vector3 endPoint = muzzle.position + muzzle.forward * maxRange;
+
+        if (Physics.Raycast(ray, out hit, maxRange, hitMask, QueryTriggerInteraction.Ignore))
+        {
+            endPoint = hit.point;
+
+            // damage + target logic
+            var damageble = hit.collider.GetComponentInParent<IDamageable>();
+            if (damageble != null)
+                damageble.TakeDamage(1);
+
+            var target = hit.collider.GetComponentInParent<MainTarget>();
+            if (target != null)
+                target.OnHit(hit);
+        }
+
+        // draw line
+        StartCoroutine(ShowLine(endPoint));
+    }
+
+    IEnumerator ShowLine(Vector3 end)
+    {
+        bulletLine.enabled = true;
+        bulletLine.SetPosition(0, muzzle.position);
+        bulletLine.SetPosition(1, end);
+
+        yield return new WaitForSeconds(lineDuration);
+
+        bulletLine.enabled = false;
+    }
+
+
 
     // Called by SlideRail when the user pulled far enough then released
     public void OnSlideCharged()
