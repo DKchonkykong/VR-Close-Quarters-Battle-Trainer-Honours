@@ -16,6 +16,7 @@ public class GunXR : MonoBehaviour
     [Header("Fire")]
     public float fireCooldown = 0.12f;
     public float maxRange = 100f;
+    public int damagePerShot = 10;  // no longer hardcoded can be changed
 
     [Header("Slide (no joint)")]
     public SlideRail slide;
@@ -102,7 +103,7 @@ public class GunXR : MonoBehaviour
             // damage + target logic
             var damageble = hit.collider.GetComponentInParent<IDamageable>();
             if (damageble != null)
-                damageble.TakeDamage(1);
+                damageble.TakeDamage(damagePerShot);
 
             var target = hit.collider.GetComponentInParent<MainTarget>();
             if (target != null)

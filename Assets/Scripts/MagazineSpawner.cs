@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MagazineSpawner : MonoBehaviour
 {
@@ -6,6 +6,10 @@ public class MagazineSpawner : MonoBehaviour
     public GameObject magazinePrefab;
     public Transform spawnPoint;       // where the mag appears
     public bool spawnOnStart = true;
+
+    [Header("Magazine Config")]
+    public int magazineMaxRounds = 30;     // ← Add this
+    public int magazineStartRounds = 30;   // ← Add this
 
     [Header("Limit")]
     public bool onlyOneAtATime = true;
@@ -33,11 +37,17 @@ public class MagazineSpawner : MonoBehaviour
 
         currentMag = Instantiate(magazinePrefab, spawnPoint.position, spawnPoint.rotation);
         
-        // Hook up the magazine to notify us when it's ejected
+        // Initialize the magazine's ammo count ← NEW CODE
         var magXR = currentMag.GetComponent<MagazineXR>();
-        if (magXR != null && spawnOnEject)
+        if (magXR != null)
         {
-            magXR.onMagazineEjected += OnMagazineEjected;
+            magXR.maxRounds = magazineMaxRounds;
+            magXR.currentRounds = magazineStartRounds;
+            
+            if (spawnOnEject)
+            {
+                magXR.onMagazineEjected += OnMagazineEjected;
+            }
         }
     }
 
