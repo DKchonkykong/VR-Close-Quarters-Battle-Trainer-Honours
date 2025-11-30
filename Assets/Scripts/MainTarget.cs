@@ -1,38 +1,33 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public interface IDamageable
-{
-    void TakeDamage(int amount);
-}
+public enum TargetType { Enemy, Hostage }
 
 public class MainTarget : MonoBehaviour, IDamageable
 {
-    //basically this handles the target's health and what it doesn when it is hit by a raycast
-    public int health = 50;
-    public Renderer visual;
-    public Color hitColor = Color.red;
-    public float resetTime = 2f;
+    [Header("Target Type")]
+    public TargetType type = TargetType.Enemy;
+  
+    [Header("Visual")]
+    public Renderer rend;
+    public Color enemyHitColor = Color.green;
+    public Color hostageHitColor = Color.red;
+    public float resetTime = 0.5f;
 
-
-    Color _originalColor;
-    Material _mat;
+    Color originalColor;
+    Material mat;
 
     void Awake()
     {
-        if (visual == null)
-        {
-            visual = GetComponentInChildren<Renderer>();
-        }
-        if (visual != null)
-        {
-            // make a unique material instance for this target
-            _mat = visual.material;
-            _originalColor = _mat.color;
-        }
+        if (!rend)
+            rend = GetComponentInChildren<Renderer>();
 
+        if (rend)
+        {
+            mat = rend.material;              // instance material
+            originalColor = mat.color;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -42,17 +37,27 @@ public class MainTarget : MonoBehaviour, IDamageable
 
     public void OnHit(RaycastHit hit)
     {
-        if (_mat == null) return;
+        if (mat == null) return;
 
-        _mat.color = hitColor;
+        // apply color depending on type
+        switch (type)
+        {
+            case TargetType.Enemy:
+                mat.color = enemyHitColor;    // good to shoot ✔
+                break;
 
-        // if we get hit again, restart the timer
+            case TargetType.Hostage:
+                mat.color = hostageHitColor;  // bad to shoot ✘
+                break;
+        }
+
         CancelInvoke(nameof(ResetColor));
         Invoke(nameof(ResetColor), resetTime);
     }
+
     void ResetColor()
     {
-        if (_mat == null) return;
-        _mat.color = _originalColor;
+        if (mat != null)
+            mat.color = originalColor;
     }
 }

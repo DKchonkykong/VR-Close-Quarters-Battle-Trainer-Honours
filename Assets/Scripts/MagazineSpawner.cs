@@ -9,6 +9,7 @@ public class MagazineSpawner : MonoBehaviour
 
     [Header("Limit")]
     public bool onlyOneAtATime = true;
+    public bool spawnOnEject = true;   // automatically spawn when mag is ejected
 
     GameObject currentMag;
 
@@ -31,6 +32,31 @@ public class MagazineSpawner : MonoBehaviour
             return;
 
         currentMag = Instantiate(magazinePrefab, spawnPoint.position, spawnPoint.rotation);
+        
+        // Hook up the magazine to notify us when it's ejected
+        var magXR = currentMag.GetComponent<MagazineXR>();
+        if (magXR != null && spawnOnEject)
+        {
+            magXR.onMagazineEjected += OnMagazineEjected;
+        }
+    }
+
+    // Called when a magazine is ejected from the gun
+    void OnMagazineEjected(MagazineXR mag)
+    {
+        if (mag != null)
+        {
+            // Unsubscribe from the event
+            mag.onMagazineEjected -= OnMagazineEjected;
+        }
+
+        currentMag = null;
+        
+        // Spawn a new magazine immediately
+        if (spawnOnEject)
+        {
+            SpawnMagazine();
+        }
     }
 
     // the magazine can tell the spawner if it's destroyed 
