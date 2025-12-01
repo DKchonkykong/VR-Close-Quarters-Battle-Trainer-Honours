@@ -31,7 +31,7 @@ public class DoorXR : MonoBehaviour
         interactable.selectEntered.RemoveListener(OnGrab);
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
+    public void OnGrab(SelectEnterEventArgs args)
     {
         if (doorScript != null)
         {
