@@ -1,43 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace DoorScript
 {
-	[RequireComponent(typeof(AudioSource))]
+    public class Door : MonoBehaviour
+    {
+        [SerializeField] private bool isOpen = false;
+        [SerializeField] private float openAngle = 90f;
+        [SerializeField] private float closeAngle = 0f;
+        [SerializeField] private float openSpeed = 2f;
 
+        private bool isMoving = false;
+        private Quaternion targetRotation;
 
-public class Door : MonoBehaviour {
-	public bool open;
-	public float smooth = 1.0f;
-	float DoorOpenAngle = -90.0f;
-    float DoorCloseAngle = 0.0f;
-	public AudioSource asource;
-	public AudioClip openDoor,closeDoor;
-	// Use this for initialization
-	void Start () {
-		asource = GetComponent<AudioSource> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (open)
-		{
-            var target = Quaternion.Euler (0, DoorOpenAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * 5 * smooth);
-	
-		}
-		else
-		{
-            var target1= Quaternion.Euler (0, DoorCloseAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, target1, Time.deltaTime * 5 * smooth);
-	
-		}  
-	}
+        private void Start()
+        {
+            targetRotation = transform.localRotation;
+        }
 
-	public void OpenDoor(){
-		open =!open;
-		asource.clip = open?openDoor:closeDoor;
-		asource.Play ();
-	}
-}
+        public void OpenDoor()
+        {
+            if (!isMoving)
+            {
+                isOpen = !isOpen;
+                float angle = isOpen ? openAngle : closeAngle;
+                targetRotation = Quaternion.Euler(0, angle, 0);
+                StartCoroutine(RotateDoor());
+            }
+        }
+
+        private IEnumerator RotateDoor()
+        {
+            isMoving = true;
+
+            while (Quaternion.Angle(transform.localRotation, targetRotation) > 0.1f)
+            {
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * openSpeed);
+                yield return null;
+            }
+
+            transform.localRotation = targetRotation;
+            isMoving = false;
+        }
+    }
 }
