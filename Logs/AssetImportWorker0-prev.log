@@ -15,7 +15,7 @@ C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65003
+56426
 Successfully changed project path to: C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,17 +49,15 @@ C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [4396]  Target information:
+Player connection [25812]  Target information:
 
-Player connection [4396]  * "[IP] 192.168.1.207 [Port] 0 [Flags] 2 [Guid] 823792259 [EditorId] 823792259 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAST724) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [25812]  * "[IP] 192.168.1.207 [Port] 0 [Flags] 2 [Guid] 51053080 [EditorId] 51053080 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAST724) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [4396]  * "[IP] 10.2.0.2 [Port] 0 [Flags] 2 [Guid] 823792259 [EditorId] 823792259 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAST724) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
-
-Player connection [4396] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [4396] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [25812] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [25812] Host joined alternative multi-casting on [225.0.0.222:34997]...
 Input System module state changed to: Initialized.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-Refreshing native plugins compatible for Editor in 53.56 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 38.73 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.62f2 (7670c08855a9)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Resources/UnitySubsystems
@@ -75,44 +73,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56724
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56032
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.013200 seconds.
-- Loaded All Assemblies, in  0.570 seconds
+Registered in 0.012671 seconds.
+- Loaded All Assemblies, in  0.517 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.395 seconds
-Domain Reload Profiling: 961ms
-	BeginReloadAssembly (156ms)
+- Finished resetting the current domain, in  0.367 seconds
+Domain Reload Profiling: 880ms
+	BeginReloadAssembly (153ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (53ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (101ms)
-	LoadAllAssembliesAndSetupDomain (243ms)
-		LoadAssemblies (151ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (88ms)
+	LoadAllAssembliesAndSetupDomain (207ms)
+		LoadAssemblies (149ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (241ms)
-			TypeCache.Refresh (239ms)
-				TypeCache.ScanAssembly (206ms)
+		AnalyzeDomain (205ms)
+			TypeCache.Refresh (203ms)
+				TypeCache.ScanAssembly (170ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (395ms)
+	FinalizeReload (367ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (328ms)
+		SetupLoadedEditorAssemblies (302ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (13ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (11ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (3ms)
-			ProcessInitializeOnLoadAttributes (225ms)
-			ProcessInitializeOnLoadMethodAttributes (72ms)
+			ProcessInitializeOnLoadAttributes (208ms)
+			ProcessInitializeOnLoadMethodAttributes (66ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -121,7 +119,7 @@ Domain Reload Profiling: 961ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.170 seconds
+- Loaded All Assemblies, in  1.108 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
 Package Manager log level set to [2]
@@ -131,47 +129,47 @@ Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.222 seconds
-Domain Reload Profiling: 2379ms
-	BeginReloadAssembly (229ms)
+- Finished resetting the current domain, in  1.207 seconds
+Domain Reload Profiling: 2306ms
+	BeginReloadAssembly (213ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (32ms)
-	RebuildCommonClasses (54ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (69ms)
-	LoadAllAssembliesAndSetupDomain (788ms)
-		LoadAssemblies (534ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (30ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (62ms)
+	LoadAllAssembliesAndSetupDomain (759ms)
+		LoadAssemblies (515ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (392ms)
-			TypeCache.Refresh (321ms)
-				TypeCache.ScanAssembly (260ms)
-			ScanForSourceGeneratedMonoScriptInfo (45ms)
-			ResolveRequiredComponents (22ms)
-	FinalizeReload (1222ms)
+		AnalyzeDomain (370ms)
+			TypeCache.Refresh (310ms)
+				TypeCache.ScanAssembly (246ms)
+			ScanForSourceGeneratedMonoScriptInfo (41ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (1207ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (972ms)
+		SetupLoadedEditorAssemblies (965ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (10ms)
-			SetLoadedEditorAssemblies (7ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (153ms)
-			ProcessInitializeOnLoadAttributes (605ms)
-			ProcessInitializeOnLoadMethodAttributes (181ms)
-			AfterProcessingInitializeOnLoad (15ms)
+			BeforeProcessingInitializeOnLoad (142ms)
+			ProcessInitializeOnLoadAttributes (619ms)
+			ProcessInitializeOnLoadMethodAttributes (175ms)
+			AfterProcessingInitializeOnLoad (14ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (9ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 21.28 ms, found 9 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 30.64 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6340 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 73 unused Assets / (374.1 KB). Loaded Objects now: 6803.
-Memory consumption went from 238.2 MB to 237.9 MB.
-Total: 12.377300 ms (FindLiveObjects: 1.295000 ms CreateObjectMapping: 0.425600 ms MarkObjects: 10.241100 ms  DeleteObjects: 0.414800 ms)
+Unloading 6342 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 73 unused Assets / (374.0 KB). Loaded Objects now: 6805.
+Memory consumption went from 238.2 MB to 237.8 MB.
+Total: 7.789000 ms (FindLiveObjects: 1.125100 ms CreateObjectMapping: 0.344600 ms MarkObjects: 5.922700 ms  DeleteObjects: 0.395600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -189,224 +187,174 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1097.191267 seconds.
-  path: Assets/Challenges/03_Training/Materials/Button_Red.mat
-  artifactKey: Guid(26f94bcb7e8d542468037d27f594d83a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Challenges/03_Training/Materials/Button_Red.mat using Guid(26f94bcb7e8d542468037d27f594d83a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 19732.731608 seconds.
+  path: Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_01_Filled Variant.prefab
+  artifactKey: Guid(16309159579d34a4c92f5e68f4824d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_01_Filled Variant.prefab using Guid(16309159579d34a4c92f5e68f4824d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'f987b378aaba8f9cb41792041cf63100') in 0.451084 seconds
+ -> (artifact id: 'b7aa5dc1c6ed7ba1f3bc2994f792940b') in 0.484449 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 20
+Number of asset objects unloaded after import = 345
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Painting_01.mat
-  artifactKey: Guid(5c4d526e95a945e46abbe1645a318634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Painting_01.mat using Guid(5c4d526e95a945e46abbe1645a318634) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Coffe.prefab
+  artifactKey: Guid(07a82e97a5029824f80d55c3952e43e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Coffe.prefab using Guid(07a82e97a5029824f80d55c3952e43e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '5a2d35760823764e5b1402d087229613') in 0.039881 seconds
+ -> (artifact id: 'bdcab20dc0a9e5b71d22fcf77edafdb2') in 0.035310 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_Knob_Material/Copper.mat
-  artifactKey: Guid(27671ef6ad4a82148ade30fbd4ec5d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_Knob_Material/Copper.mat using Guid(27671ef6ad4a82148ade30fbd4ec5d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '09b8c1b894e8bce583217cb414eba38f') in 0.022500 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 5
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Gold.mat
-  artifactKey: Guid(84a1ffeca40e4c6439b0a1f93b4d287c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Gold.mat using Guid(84a1ffeca40e4c6439b0a1f93b4d287c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '1189edd5147ca5b0e67804977a19ce5c') in 0.015704 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Burlap_01.mat
-  artifactKey: Guid(4c3e122e15d5d984083bffaa2d094ff5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Burlap_01.mat using Guid(4c3e122e15d5d984083bffaa2d094ff5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '279646514617dd170b667d54f47af2ec') in 0.032924 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/CastIron_01.mat
-  artifactKey: Guid(27f834cdb4589be48903c1e529e09c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/CastIron_01.mat using Guid(27f834cdb4589be48903c1e529e09c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '370de6eaddb860699c842382f7e48163') in 0.025725 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_05.mat
-  artifactKey: Guid(ee274bac83b432e489e9163a36560bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_05.mat using Guid(ee274bac83b432e489e9163a36560bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'a420ef411626cde4c306ab0726726366') in 0.016079 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_01-02.mat
-  artifactKey: Guid(da8d66e9aab28f140a44add462e64b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_01-02.mat using Guid(da8d66e9aab28f140a44add462e64b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'd0240afafdada9ef68f1f83a15927927') in 0.021584 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Brick Project Studio/_BPS Basic Assets/Common/Materials/Basic Assets/BA_Metal_Gold_01.mat
-  artifactKey: Guid(e000cf84e00aa6f4aac76474f809a621) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/_BPS Basic Assets/Common/Materials/Basic Assets/BA_Metal_Gold_01.mat using Guid(e000cf84e00aa6f4aac76474f809a621) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '0ded637315af38a6dcbae8eb19a32185') in 0.016210 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/DisfusedVase.mat
-  artifactKey: Guid(076286717a5c2d64c91c17c7f0ce84fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/DisfusedVase.mat using Guid(076286717a5c2d64c91c17c7f0ce84fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '3788a78cd5bc7c786f01a84b71cf2a79') in 0.014965 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_Milk.mat
-  artifactKey: Guid(6b74074c1b399f5448486ffa52329ddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_Milk.mat using Guid(6b74074c1b399f5448486ffa52329ddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'ee0d8d02338cd77ffafdf4777ee75eb0') in 0.042988 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_Coffe.mat
-  artifactKey: Guid(1daed5b934f508147aad59daed1b0c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_Coffe.mat using Guid(1daed5b934f508147aad59daed1b0c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '79408b76dce78601f033163aa7b56296') in 0.032239 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
-========================================================================
-Received Import Request.
-  Time since last request: 0.000476 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_2_Materials/Door_2_Black.mat
-  artifactKey: Guid(5eeb4b9f36f15ef42b901871ca6ad41e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_2_Materials/Door_2_Black.mat using Guid(5eeb4b9f36f15ef42b901871ca6ad41e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '186d52107f3739cefd508fdf2a445329') in 0.022599 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Brass.mat
-  artifactKey: Guid(b9c5d6ba92c526a43991da07d41229bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Brass.mat using Guid(b9c5d6ba92c526a43991da07d41229bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '7cf6b65b9f48b78114eda53271e60768') in 0.011359 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Decal.mat
-  artifactKey: Guid(31d0dcc6f2dd4e4408d18036a2c93862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/Decal.mat using Guid(31d0dcc6f2dd4e4408d18036a2c93862) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'b555507488bfdb2cf620cb332f99ce64') in 0.010873 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
   Time since last request: 0.000030 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_06-07.mat
-  artifactKey: Guid(fad41da6b0b4a274ea1daeb98b3d6b9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Misc/Canvas_Nat_06-07.mat using Guid(fad41da6b0b4a274ea1daeb98b3d6b9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  path: Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_03_Filled.prefab
+  artifactKey: Guid(3d51d280e33c5fe4c97ae593c2292997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_03_Filled.prefab using Guid(3d51d280e33c5fe4c97ae593c2292997) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '42616474644eee3bed483c4472ea6c91') in 0.026124 seconds
+ -> (artifact id: '37fbbf735ec2bca9f215fc2492edc55a') in 0.038383 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
+Number of asset objects unloaded after import = 219
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_White.prefab
+  artifactKey: Guid(e3fe7ada7ca25d840ae444bd16f0f4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_White.prefab using Guid(e3fe7ada7ca25d840ae444bd16f0f4d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6367308de04d899095d2418c8f439313') in 0.028849 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Coffe.prefab
+  artifactKey: Guid(d4718fd25ff9fc64a820d539bfe490fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Coffe.prefab using Guid(d4718fd25ff9fc64a820d539bfe490fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'a61544721732fc9970d0eae6f9885915') in 0.028163 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
   Time since last request: 0.000022 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_2_Materials/Door_2_Yellow.mat
-  artifactKey: Guid(155d02283bbeb844ea14f571528f1607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_2_Materials/Door_2_Yellow.mat using Guid(155d02283bbeb844ea14f571528f1607) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Venge.prefab
+  artifactKey: Guid(cbadd0ff450ed6f4d8d7f4224f6d0414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Venge.prefab using Guid(cbadd0ff450ed6f4d8d7f4224f6d0414) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'c3955fea7567ab921c09a47d6a2c8b3d') in 0.022384 seconds
+ -> (artifact id: 'bfbafcb547c738d409621ffbecef83d0') in 0.028046 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_White.mat
-  artifactKey: Guid(f85f527d128d113488c6db9bd3a05227) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_1_Materials/Door_1_White.mat using Guid(f85f527d128d113488c6db9bd3a05227) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_Yellow.prefab
+  artifactKey: Guid(93aa57c473e4a58409e5b960c037c3f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_Yellow.prefab using Guid(93aa57c473e4a58409e5b960c037c3f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '45a9de8bf195ea14ff8742ad14d0f8ea') in 0.028181 seconds
+ -> (artifact id: '5d248f8bd6afc068db563c2b2b46513d') in 0.025674 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Free Wood Door Pack/Materials/Door_3_Materials/Door_3_Brown.mat
-  artifactKey: Guid(ca009be402b5e1f4c8a65b379ab9e12e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Free Wood Door Pack/Materials/Door_3_Materials/Door_3_Brown.mat using Guid(ca009be402b5e1f4c8a65b379ab9e12e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_04_Filled.prefab
+  artifactKey: Guid(2e2398df6726e164fb29cbffecf878a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Brick Project Studio/Apartment Kit/_Prefabs/Furniture/Wine Cabinet/BarCabinet_Apt_04_Filled.prefab using Guid(2e2398df6726e164fb29cbffecf878a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '45ea492fd10665cef6a8fc33aa3d70e5') in 0.021131 seconds
+ -> (artifact id: '75c16d319d7ccd5ed4b410a9756b9430') in 0.041769 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 220
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Brown.prefab
+  artifactKey: Guid(fb21c2677f6de9b41b800858634f37f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Brown.prefab using Guid(fb21c2677f6de9b41b800858634f37f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '9b817b28fd68f6b39c19f372c2c00d86') in 0.041756 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
   Time since last request: 0.000021 seconds.
-  path: Assets/Challenges/01_Architecture/Materials/ClipBoard1.mat
-  artifactKey: Guid(7533a8a46b3494648a1ca47af86ed1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Challenges/01_Architecture/Materials/ClipBoard1.mat using Guid(7533a8a46b3494648a1ca47af86ed1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Black.prefab
+  artifactKey: Guid(b5a5a17dc3a6d9e47bd468828a2dec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Black.prefab using Guid(b5a5a17dc3a6d9e47bd468828a2dec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '9b4fc77e308aea8403999dfcabe46d1e') in 0.009480 seconds
+ -> (artifact id: '8baa9bba23a60e286efe387f01aa24cb') in 0.027404 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Chrome.mat
-  artifactKey: Guid(4580dd49916b3c542b97109c8ca425f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Brick Project Studio/Apartment Kit/Common/Materials/Surface/Brushed Metal_Chrome.mat using Guid(4580dd49916b3c542b97109c8ca425f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_2/Door_2_Brown.prefab
+  artifactKey: Guid(f5c10722fcf449344b4583f9adb8558d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_2/Door_2_Brown.prefab using Guid(f5c10722fcf449344b4583f9adb8558d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '39837b36aff90d43bc2ee248782ff220') in 0.011711 seconds
+ -> (artifact id: 'ac634decb06ad4c126bd214bc962272d') in 0.032819 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
+Number of asset objects unloaded after import = 36
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Challenges/01_Architecture/Materials/ClipBoardBack.mat
-  artifactKey: Guid(c9f96e450492745be8398632c54fe9fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Challenges/01_Architecture/Materials/ClipBoardBack.mat using Guid(c9f96e450492745be8398632c54fe9fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Brown.prefab
+  artifactKey: Guid(50f132ebf2f56c94fb5dda3d12b89795) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Brown.prefab using Guid(50f132ebf2f56c94fb5dda3d12b89795) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'd7143bb0eb7d365fa3843525d03239a8') in 0.018643 seconds
+ -> (artifact id: '3a16cb39b38dd00a30a87df643f39d9c') in 0.027841 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_Venge.prefab
+  artifactKey: Guid(4995f58b750236d448fc8fd2a5eb2782) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_3/Door_3_Venge.prefab using Guid(4995f58b750236d448fc8fd2a5eb2782) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '7e6a9f10e830f1a523a21ab79ad7b8b0') in 0.029830 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Black.prefab
+  artifactKey: Guid(fca78a0b9b6c3da4db6e0fd6ab1dd712) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Black.prefab using Guid(fca78a0b9b6c3da4db6e0fd6ab1dd712) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '4e61b6621b74f618f9904409ae5ede32') in 0.030481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Milk.prefab
+  artifactKey: Guid(145951c76cacc4f4393085a293255411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_1/Door_1_Milk.prefab using Guid(145951c76cacc4f4393085a293255411) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '7e5bd7630eb5e487598601275442a1be') in 0.028101 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 17.293504 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Venge.prefab
+  artifactKey: Guid(d5b34822e12447b41a9a59f29e8818c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_4/Door_4_Venge.prefab using Guid(d5b34822e12447b41a9a59f29e8818c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '310ca338248ea004360e5aa5aa0c3111') in 0.030833 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Free Wood Door Pack/Prefab/Wood/Door_5/Door_5_Brown.prefab
+  artifactKey: Guid(bf3641dc1a2eed346a86d653d78ad96b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Free Wood Door Pack/Prefab/Wood/Door_5/Door_5_Brown.prefab using Guid(bf3641dc1a2eed346a86d653d78ad96b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'a9e792441c8adb199085354eccaf27e8') in 0.030290 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
 AssetImportWorker is now disconnected from the server
