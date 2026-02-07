@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         if (!agent || !agent.isOnNavMesh)
             return;
 
-        bool canSee = perception && player && perception.CanSeePlayer(player);
+        bool canSee = perception && player && perception.CanSee(player, out _);
 
         if (canSee)
         {
