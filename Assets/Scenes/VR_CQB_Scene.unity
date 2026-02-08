@@ -11345,7 +11345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewDistance: 15
-  viewAngle: 60
+  viewAngle: 70
   eyePoint: {fileID: 1964602098}
   occlusionMask:
     serializedVersion: 2
