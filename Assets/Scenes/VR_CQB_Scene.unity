@@ -9841,6 +9841,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030452985, y: 0.07, z: 0.09728289}
   m_Center: {x: 0, y: -0.043713737, z: 0.048285827}
+--- !u!1 &791293269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791293270}
+  m_Layer: 0
+  m_Name: EyePointPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791293270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791293269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1432491102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &792694985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11218,6 +11249,7 @@ GameObject:
   - component: {fileID: 974976003}
   - component: {fileID: 974976002}
   - component: {fileID: 974976004}
+  - component: {fileID: 974976005}
   m_Layer: 9
   m_Name: TargetEnemy
   m_TagString: Untagged
@@ -11366,17 +11398,33 @@ MonoBehaviour:
   agent: {fileID: 974976004}
   player: {fileID: 1432491102}
   perception: {fileID: 974976002}
+  eyePoint: {fileID: 1964602098}
   patrolPoints:
   - {fileID: 299159072}
   - {fileID: 1539593505}
   - {fileID: 148473273}
   - {fileID: 1237459098}
   patrolWait: 1
-  investigateTime: 3
-  attackRange: 2.5
-  fireCooldown: 0.4
   patrolSpeed: 1.6
+  investigateTime: 3
   chaseSpeed: 3.2
+  attackRange: 2.5
+  attackStopDistance: 2
+  damagePerShot: 1
+  fireCooldown: 0.4
+  shotBlockMask:
+    serializedVersion: 2
+    m_Bits: 10240
+  playerHitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  audioSource: {fileID: 974976005}
+  fireClip: {fileID: 8300000, guid: 5fa2a1e03047f4f37a8f475c272636e7, type: 3}
+  blockedClip: {fileID: 8300000, guid: d727703712b36426db75d0e99085a350, type: 3}
+  shotLine: {fileID: 0}
+  shotLineDuration: 0.05
+  drawAttackDebugRay: 1
+  debugLineTime: 0.05
   currentState: 0
 --- !u!195 &974976004
 NavMeshAgent:
@@ -11400,6 +11448,102 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!82 &974976005
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974975994}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &980768276
 GameObject:
   m_ObjectHideFlags: 0
@@ -13521,7 +13665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112439912}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1113b0583fb38b4ebffca9244dc2772, type: 3}
   m_Name: 
@@ -13529,13 +13673,29 @@ MonoBehaviour:
   agent: {fileID: 1112439920}
   player: {fileID: 1432491102}
   perception: {fileID: 1112439918}
+  eyePoint: {fileID: 0}
   patrolPoints: []
   patrolWait: 1
-  investigateTime: 3
-  attackRange: 2.5
-  fireCooldown: 0.4
   patrolSpeed: 1.6
+  investigateTime: 3
   chaseSpeed: 3.2
+  attackRange: 2.5
+  attackStopDistance: 2
+  damagePerShot: 1
+  fireCooldown: 0.4
+  shotBlockMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  playerHitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  audioSource: {fileID: 0}
+  fireClip: {fileID: 0}
+  blockedClip: {fileID: 0}
+  shotLine: {fileID: 0}
+  shotLineDuration: 0.05
+  drawAttackDebugRay: 1
+  debugLineTime: 0.05
   currentState: 0
 --- !u!195 &1112439920
 NavMeshAgent:
@@ -17251,7 +17411,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 791293270}
   m_Father: {fileID: 1187260117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1432491103
@@ -25483,6 +25644,7 @@ GameObject:
   - component: {fileID: 2138479800}
   - component: {fileID: 2138479799}
   - component: {fileID: 2138479798}
+  - component: {fileID: 2138479801}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -25609,6 +25771,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XROrigin: {fileID: 2138479796}
+--- !u!114 &2138479801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138479794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94504a4a60adb246a676453cc4e8dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 5
+  resetDelay: 1
+  reloadSceneOnDeath: 1
 --- !u!1 &2140081826
 GameObject:
   m_ObjectHideFlags: 0
