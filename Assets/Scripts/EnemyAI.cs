@@ -5,51 +5,63 @@ using Unity.XR.CoreUtils;
 
 public class EnemyAI : MonoBehaviour
 {
-    public enum State { Patrol, Investigate, Chase, Attack }
-    
+    public enum State { Patrol, Investigate, Chase, Attack, Dead }
+
     [Header("References")]
     public NavMeshAgent agent;
     public Transform player;
     public EnemyPerception perception;
-    public Transform eyePoint; // if null, will calculate from transform
+    public Transform eyePoint;          // where raycasts originate
+    public MainTarget targetHealth;     // optional: used for death detection
+    public Animator animator;           // optional: animations
 
     [Header("Patrol")]
     public List<Transform> patrolPoints = new();
     public float patrolWait = 1f;
     public float patrolSpeed = 1.6f;
 
-    [Header("Investigation")]
+    [Header("Investigate/Chase")]
     public float investigateTime = 3f;
     public float chaseSpeed = 3.2f;
 
     [Header("Attack")]
-    public float attackRange = 2.5f;
+    public float attackRange = 8f;
     public float attackStopDistance = 2f;
     public int damagePerShot = 1;
     public float fireCooldown = 0.4f;
 
+    [Header("Attack Movement (Strafe)")]
+    [Tooltip("How far to offset left/right while attacking.")]
+    public float strafeDistance = 1.25f;
+
+    [Tooltip("How often the enemy picks a new strafe direction/point.")]
+    public float strafeChangeInterval = 0.75f;
+
+    [Tooltip("Chance to switch strafe direction each interval (0..1).")]
+    [Range(0f, 1f)] public float strafeSwitchChance = 0.6f;
+
+    [Tooltip("How far to keep from the player while attacking.")]
+    public float idealAttackDistance = 3.0f;
+
     [Header("Raycasting")]
-    [Tooltip("What blocks shots (Walls, etc.)")]
+    [Tooltip("What blocks shots (Walls, Doors, Props etc).")]
     public LayerMask shotBlockMask = ~0;
-    
-    [Tooltip("Optional: What counts as player hit (Player layer)")]
-    public LayerMask playerHitMask = ~0;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip fireClip;
-    public AudioClip blockedClip; // optional "thud" if hits wall
+    public AudioClip blockedClip;
 
     [Header("Visual Feedback")]
     public LineRenderer shotLine;
     public float shotLineDuration = 0.05f;
-    
+
     [Header("Debug")]
     public bool drawAttackDebugRay = true;
     public float debugLineTime = 0.05f;
     public State currentState = State.Patrol;
 
-    // Runtime state
+    // Runtime
     int patrolIndex = 0;
     float stateTimer = 0f;
     float nextFireTime = 0f;
@@ -57,36 +69,82 @@ public class EnemyAI : MonoBehaviour
     Vector3 lastSeenPos;
     bool hasLastSeen;
 
+    float strafeTimer = 0f;
+    int strafeSign = 1; // -1 left, +1 right
+
+    bool isDead = false;
+
+    // Animator param names (change if your controller uses different names)
+    static readonly int AnimIsMoving = Animator.StringToHash("IsMoving");
+    static readonly int AnimIsShooting = Animator.StringToHash("IsShooting");
+    static readonly int AnimSpeed = Animator.StringToHash("Speed");
+    static readonly int AnimDie = Animator.StringToHash("Die");
+
     void Awake()
     {
         if (!agent) agent = GetComponent<NavMeshAgent>();
         if (!perception) perception = GetComponent<EnemyPerception>();
+        if (!targetHealth) targetHealth = GetComponent<MainTarget>();
+        if (!animator) animator = GetComponentInChildren<Animator>();
 
         if (!player)
         {
             var xrOrigin = FindAnyObjectByType<XROrigin>();
-            if (xrOrigin && xrOrigin.Camera) 
-                player = xrOrigin.Camera.transform;
-            else if (Camera.main) 
-                player = Camera.main.transform;
+            if (xrOrigin && xrOrigin.Camera) player = xrOrigin.Camera.transform;
+            else if (Camera.main) player = Camera.main.transform;
         }
 
-        // Ensure shotLine is disabled at start
-        if (shotLine) 
-            shotLine.enabled = false;
+        if (!eyePoint && perception && perception.eyePoint) eyePoint = perception.eyePoint;
+
+        if (shotLine) shotLine.enabled = false;
     }
 
     void OnEnable()
     {
+        ResetAI();
+    }
+
+    void ResetAI()
+    {
         stateTimer = 0f;
         nextFireTime = 0f;
         hasLastSeen = false;
+
+        strafeTimer = 0f;
+        strafeSign = 1;
+
+        // If we respawn by resetting health without disabling the GO,
+        // detect that and “revive” cleanly.
+        if (targetHealth && targetHealth.currentHealth > 0)
+        {
+            isDead = false;
+            currentState = State.Patrol;
+            if (agent)
+            {
+                agent.isStopped = false;
+                agent.enabled = true;
+            }
+        }
+
+        SetAnimShooting(false);
     }
 
     void Update()
     {
-        if (!agent || !agent.isOnNavMesh)
+        if (!agent || !agent.isOnNavMesh) return;
+
+        // Death check (works even if MainTarget just sets HP to 0 and hides visuals)
+        if (!isDead && targetHealth && targetHealth.currentHealth <= 0)
+        {
+            Die();
+        }
+
+        // If dead, do nothing
+        if (isDead || currentState == State.Dead)
+        {
+            UpdateAnimatorMovement();
             return;
+        }
 
         bool canSee = perception && player && perception.CanSee(player, out _);
 
@@ -98,50 +156,33 @@ public class EnemyAI : MonoBehaviour
 
         float distToPlayer = player ? Vector3.Distance(transform.position, player.position) : Mathf.Infinity;
 
-        // State machine
         switch (currentState)
         {
             case State.Patrol:
                 agent.speed = patrolSpeed;
                 agent.stoppingDistance = 0.5f;
+                SetAnimShooting(false);
 
-                if (canSee)
-                {
-                    SetState(State.Chase);
-                    break;
-                }
-
+                if (canSee) { SetState(State.Chase); break; }
                 DoPatrol();
                 break;
 
             case State.Investigate:
                 agent.speed = chaseSpeed;
                 agent.stoppingDistance = 0.5f;
+                SetAnimShooting(false);
 
-                if (canSee)
-                {
-                    SetState(State.Chase);
-                    break;
-                }
-
+                if (canSee) { SetState(State.Chase); break; }
                 DoInvestigate();
                 break;
 
             case State.Chase:
                 agent.speed = chaseSpeed;
                 agent.stoppingDistance = 0.5f;
+                SetAnimShooting(false);
 
-                if (!canSee)
-                {
-                    SetState(State.Investigate);
-                    break;
-                }
-
-                if (distToPlayer <= attackRange)
-                {
-                    SetState(State.Attack);
-                    break;
-                }
+                if (!canSee) { SetState(State.Investigate); break; }
+                if (distToPlayer <= attackRange) { SetState(State.Attack); break; }
 
                 agent.SetDestination(player.position);
                 FaceTarget(player.position);
@@ -149,22 +190,16 @@ public class EnemyAI : MonoBehaviour
 
             case State.Attack:
                 agent.speed = chaseSpeed;
+                agent.stoppingDistance = Mathf.Max(attackStopDistance, attackRange * 0.35f);
 
-                if (!canSee)
-                {
-                    SetState(State.Investigate);
-                    break;
-                }
+                if (!canSee) { SetState(State.Investigate); break; }
+                if (distToPlayer > attackRange * 1.2f) { SetState(State.Chase); break; }
 
-                if (distToPlayer > attackRange * 1.15f)
-                {
-                    SetState(State.Chase);
-                    break;
-                }
-
-                DoAttack(canSee, distToPlayer);
+                DoAttack(distToPlayer);
                 break;
         }
+
+        UpdateAnimatorMovement();
     }
 
     void SetState(State s)
@@ -174,18 +209,23 @@ public class EnemyAI : MonoBehaviour
 
         if (s == State.Investigate && hasLastSeen)
             agent.SetDestination(lastSeenPos);
+
+        if (s == State.Attack)
+        {
+            strafeTimer = 0f;
+            // Randomize first strafe direction
+            strafeSign = (Random.value < 0.5f) ? -1 : 1;
+        }
     }
 
     void DoPatrol()
     {
-        if (patrolPoints == null || patrolPoints.Count == 0)
-            return;
+        if (patrolPoints == null || patrolPoints.Count == 0) return;
 
         Transform target = patrolPoints[patrolIndex];
         if (!target) return;
 
-        if (!agent.hasPath)
-            agent.SetDestination(target.position);
+        if (!agent.hasPath) agent.SetDestination(target.position);
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.05f)
         {
@@ -203,7 +243,6 @@ public class EnemyAI : MonoBehaviour
     {
         stateTimer += Time.deltaTime;
 
-        // Wait around last seen position for a bit
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.05f)
         {
             if (stateTimer >= investigateTime)
@@ -213,37 +252,122 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void DoAttack(bool canSee, float distToPlayer)
+    void DoAttack(float distToPlayer)
     {
-        // Set stopping distance for CQB
-        agent.stoppingDistance = Mathf.Max(attackStopDistance, attackRange * 0.8f);
+        if (!player) return;
 
-        // If close enough and can see, stop and shoot
-        if (canSee && distToPlayer <= attackRange)
+        // Always face player in CQB
+        FaceTarget(player.position);
+
+        // If too close/far, adjust forward/back to maintain "ideal" range
+        Vector3 toPlayer = (player.position - transform.position);
+        toPlayer.y = 0f;
+
+        float planarDist = toPlayer.magnitude;
+        Vector3 forward = (planarDist > 0.001f) ? (toPlayer / planarDist) : transform.forward;
+
+        Vector3 desired = transform.position;
+
+        // Maintain an ideal distance band
+        if (planarDist < idealAttackDistance * 0.85f)
         {
-            // Stop moving while firing
+            desired = transform.position - forward * 0.75f; // back up a bit
+        }
+        else if (planarDist > idealAttackDistance * 1.15f)
+        {
+            desired = transform.position + forward * 0.75f; // step in a bit
+        }
+
+        // Strafe left/right around the player
+        strafeTimer += Time.deltaTime;
+        if (strafeTimer >= strafeChangeInterval)
+        {
+            strafeTimer = 0f;
+            if (Random.value < strafeSwitchChance) strafeSign *= -1;
+        }
+
+        Vector3 right = Vector3.Cross(Vector3.up, forward).normalized; // right relative to player direction
+        desired += right * (strafeSign * strafeDistance);
+
+        // Snap desired point to navmesh so agent doesn't try to walk through walls
+        if (NavMesh.SamplePosition(desired, out NavMeshHit navHit, 1.0f, agent.areaMask))
+        {
+            agent.SetDestination(navHit.position);
+        }
+        else
+        {
+            // Fallback: just stop moving
             agent.SetDestination(transform.position);
+        }
 
-            // Face player
-            FaceTarget(player.position);
-
-            // Fire at player
+        // Shoot when in range (you can also require “steady aim” here)
+        if (distToPlayer <= attackRange)
+        {
+            SetAnimShooting(true);
             TryAttackPlayer();
         }
         else
         {
-            // Keep moving toward player
-            agent.SetDestination(player.position);
-
-            // Still face player while moving
-            FaceTarget(player.position);
+            SetAnimShooting(false);
         }
+    }
+
+    void TryAttackPlayer()
+    {
+        if (!player) return;
+        if (Time.time < nextFireTime) return;
+
+        Vector3 origin = (eyePoint ? eyePoint.position : transform.position + Vector3.up * 1.5f);
+        Vector3 target = player.position + Vector3.up * 0.2f;
+
+        Vector3 dir = (target - origin).normalized;
+        float dist = Vector3.Distance(origin, target);
+
+        // Tiny inaccuracy (optional)
+        dir = Quaternion.Euler(Random.Range(-1f, 1f), Random.Range(-2f, 2f), 0f) * dir;
+
+        // IMPORTANT:
+        // This raycast returns TRUE if it hits *something* in shotBlockMask.
+        // So shotBlockMask must include walls/doors/props etc. (things that block bullets).
+        bool hitSomething = Physics.Raycast(
+            origin,
+            dir,
+            out RaycastHit hit,
+            dist,
+            shotBlockMask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        Vector3 hitPoint = hitSomething ? hit.point : target;
+
+        if (drawAttackDebugRay)
+        {
+            Debug.DrawLine(origin, hitPoint, hitSomething ? Color.red : Color.green, debugLineTime);
+        }
+
+        if (shotLine) ShowShotLine(origin, hitPoint);
+
+        // If we hit something before reaching player, we assume the shot is blocked.
+        // If you want head/body hitboxes later: raycast ALL, then pick the first hit.
+        if (!hitSomething)
+        {
+            var ph = player.GetComponentInParent<PlayerHealth>();
+            if (ph) ph.TakeDamage(damagePerShot);
+
+            if (audioSource && fireClip) audioSource.PlayOneShot(fireClip);
+        }
+        else
+        {
+            if (audioSource && blockedClip) audioSource.PlayOneShot(blockedClip);
+        }
+
+        nextFireTime = Time.time + fireCooldown;
     }
 
     void FaceTarget(Vector3 targetPosition)
     {
         Vector3 flatDir = targetPosition - transform.position;
-        flatDir.y = 0;
+        flatDir.y = 0f;
 
         if (flatDir.sqrMagnitude > 0.0001f)
         {
@@ -252,81 +376,38 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void TryAttackPlayer()
+    void Die()
     {
-        if (!player) return;
+        isDead = true;
+        currentState = State.Dead;
 
-        // Cooldown check
-        if (Time.time < nextFireTime) return;
+        SetAnimShooting(false);
 
-        // Get origin point (eye or estimated head position)
-        Vector3 origin = eyePoint 
-            ? eyePoint.position 
-            : transform.position + Vector3.up * 1.5f;
-
-        // Target player's center mass (slightly above origin)
-        Vector3 target = player.position + Vector3.up * 0.2f;
-        Vector3 dir = (target - origin).normalized;
-        float dist = Vector3.Distance(origin, target);
-
-        // Optional: Add slight inaccuracy for realism
-        dir = Quaternion.Euler(
-            Random.Range(-1f, 1f), 
-            Random.Range(-2f, 2f), 
-            0f
-        ) * dir;
-
-        // Raycast: check if something blocks the shot
-        bool blocked = Physics.Raycast(
-            origin, 
-            dir, 
-            out RaycastHit hit, 
-            dist, 
-            shotBlockMask, 
-            QueryTriggerInteraction.Ignore
-        );
-
-        // Visual feedback
-        Vector3 hitPoint = blocked ? hit.point : target;
-        
-        if (drawAttackDebugRay)
+        if (agent)
         {
-            Debug.DrawLine(
-                origin, 
-                hitPoint, 
-                blocked ? Color.red : Color.green, 
-                debugLineTime
-            );
+            agent.ResetPath();
+            agent.isStopped = true;
         }
 
-        if (shotLine)
+        if (animator)
         {
-            ShowShotLine(origin, hitPoint);
+            animator.SetTrigger(AnimDie);
         }
+    }
 
-        // Apply damage if shot is clear
-        if (!blocked)
-        {
-            var ph = player.GetComponentInParent<PlayerHealth>();
-            if (ph != null)
-            {
-                ph.TakeDamage(damagePerShot);
-                Debug.Log($"Enemy hit player for {damagePerShot} damage! HP: {ph.currentHealth}/{ph.maxHealth}");
-            }
+    void UpdateAnimatorMovement()
+    {
+        if (!animator || !agent) return;
 
-            if (audioSource && fireClip) 
-                audioSource.PlayOneShot(fireClip);
-        }
-        else
-        {
-            // Shot was blocked by wall/obstacle
-            Debug.Log($"Enemy shot blocked by {hit.collider.name}");
-            
-            if (audioSource && blockedClip) 
-                audioSource.PlayOneShot(blockedClip);
-        }
+        float speed = agent.velocity.magnitude;
+        animator.SetFloat(AnimSpeed, speed);
+        animator.SetBool(AnimIsMoving, speed > 0.05f);
+    }
 
-        nextFireTime = Time.time + fireCooldown;
+    void SetAnimShooting(bool shooting)
+    {
+        if (!animator) return;
+        animator.SetBool(AnimIsShooting, shooting);
     }
 
     void ShowShotLine(Vector3 a, Vector3 b)
@@ -336,7 +417,7 @@ public class EnemyAI : MonoBehaviour
         shotLine.enabled = true;
         shotLine.SetPosition(0, a);
         shotLine.SetPosition(1, b);
-        
+
         CancelInvoke(nameof(HideShotLine));
         Invoke(nameof(HideShotLine), shotLineDuration);
     }
@@ -344,41 +425,5 @@ public class EnemyAI : MonoBehaviour
     void HideShotLine()
     {
         if (shotLine) shotLine.enabled = false;
-    }
-
-    // Editor gizmos for debugging
-    void OnDrawGizmosSelected()
-    {
-        if (!Application.isPlaying) return;
-
-        // Draw attack range
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-
-        // Draw current state
-        Vector3 textPos = transform.position + Vector3.up * 2.5f;
-        UnityEditor.Handles.Label(textPos, $"State: {currentState}");
-
-        // Draw patrol path
-        if (patrolPoints != null && patrolPoints.Count > 1)
-        {
-            Gizmos.color = Color.cyan;
-            for (int i = 0; i < patrolPoints.Count; i++)
-            {
-                if (patrolPoints[i] == null) continue;
-                
-                int next = (i + 1) % patrolPoints.Count;
-                if (patrolPoints[next] == null) continue;
-
-                Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[next].position);
-            }
-        }
-
-        // Draw line to player if visible
-        if (player && perception && perception.CanSee(player, out _))
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position + Vector3.up * 1.5f, player.position);
-        }
     }
 }
