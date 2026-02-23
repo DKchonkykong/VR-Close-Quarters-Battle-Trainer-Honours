@@ -24713,6 +24713,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: ba79a925f524c6f46a3ccc5bca54c78d,
         type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ba79a925f524c6f46a3ccc5bca54c78d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 19b0f15ee7419614fb654d4599aa5e80, type: 2}
+    - target: {fileID: 5866666021909216657, guid: ba79a925f524c6f46a3ccc5bca54c78d,
+        type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}

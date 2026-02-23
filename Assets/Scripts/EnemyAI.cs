@@ -13,7 +13,16 @@ public class EnemyAI : MonoBehaviour
     public EnemyPerception perception;
     public Transform eyePoint;          // where raycasts originate
     public MainTarget targetHealth;     // optional: used for death detection
-    public Animator animator;           // optional: animations
+    public Animator animator;           // Added: reference to animator
+
+    [Header("Animations")]
+    static readonly int AnimShoot = Animator.StringToHash("Shoot");
+    static readonly int AnimHit = Animator.StringToHash("Hit");
+    static readonly int AnimDead = Animator.StringToHash("Dead");
+    static readonly int AnimIsMoving = Animator.StringToHash("IsMoving");
+    static readonly int AnimIsShooting = Animator.StringToHash("IsShooting");
+    static readonly int AnimSpeed = Animator.StringToHash("Speed");
+    static readonly int AnimDie = Animator.StringToHash("Die");
 
     [Header("Patrol")]
     public List<Transform> patrolPoints = new();
@@ -74,12 +83,6 @@ public class EnemyAI : MonoBehaviour
 
     bool isDead = false;
 
-    // Animator param names (change if your controller uses different names)
-    static readonly int AnimIsMoving = Animator.StringToHash("IsMoving");
-    static readonly int AnimIsShooting = Animator.StringToHash("IsShooting");
-    static readonly int AnimSpeed = Animator.StringToHash("Speed");
-    static readonly int AnimDie = Animator.StringToHash("Die");
-
     void Awake()
     {
         if (!agent) agent = GetComponent<NavMeshAgent>();
@@ -114,7 +117,7 @@ public class EnemyAI : MonoBehaviour
         strafeSign = 1;
 
         // If we respawn by resetting health without disabling the GO,
-        // detect that and “revive” cleanly.
+        // detect that and "revive" cleanly.
         if (targetHealth && targetHealth.currentHealth > 0)
         {
             isDead = false;
@@ -300,20 +303,18 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(transform.position);
         }
 
-        // Shoot when in range (you can also require “steady aim” here)
+        // Shoot when in range (you can also require "steady aim" here)
         if (distToPlayer <= attackRange)
         {
-            SetAnimShooting(true);
             TryAttackPlayer();
-        }
-        else
-        {
-            SetAnimShooting(false);
         }
     }
 
     void TryAttackPlayer()
     {
+        if (animator)
+            animator.SetTrigger(AnimShoot);
+            
         if (!player) return;
         if (Time.time < nextFireTime) return;
 
@@ -401,13 +402,14 @@ public class EnemyAI : MonoBehaviour
 
         float speed = agent.velocity.magnitude;
         animator.SetFloat(AnimSpeed, speed);
-        animator.SetBool(AnimIsMoving, speed > 0.05f);
     }
 
-    void SetAnimShooting(bool shooting)
+    void SetAnimShooting(bool isShooting)
     {
-        if (!animator) return;
-        animator.SetBool(AnimIsShooting, shooting);
+        if (animator)
+        {
+            animator.SetBool(AnimIsShooting, isShooting);
+        }
     }
 
     void ShowShotLine(Vector3 a, Vector3 b)
