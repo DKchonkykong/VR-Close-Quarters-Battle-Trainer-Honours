@@ -9883,7 +9883,7 @@ PrefabInstance:
     - target: {fileID: 4539043608626423805, guid: 266d5a1d00e2ac2479b93bdd1914ad78,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.29
+      value: -8.236
       objectReference: {fileID: 0}
     - target: {fileID: 4539043608626423805, guid: 266d5a1d00e2ac2479b93bdd1914ad78,
         type: 3}
@@ -9893,7 +9893,7 @@ PrefabInstance:
     - target: {fileID: 4539043608626423805, guid: 266d5a1d00e2ac2479b93bdd1914ad78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.13
+      value: 9.85
       objectReference: {fileID: 0}
     - target: {fileID: 4539043608626423805, guid: 266d5a1d00e2ac2479b93bdd1914ad78,
         type: 3}
@@ -11248,7 +11248,6 @@ GameObject:
   - component: {fileID: 974976002}
   - component: {fileID: 974976004}
   - component: {fileID: 974976005}
-  - component: {fileID: 974976006}
   m_Layer: 9
   m_Name: TargetEnemy
   m_TagString: Untagged
@@ -11497,27 +11496,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &974976006
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974975994}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19b0f15ee7419614fb654d4599aa5e80, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &980768276
 GameObject:
   m_ObjectHideFlags: 0

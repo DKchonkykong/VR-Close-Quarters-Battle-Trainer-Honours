@@ -400,10 +400,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (!animator || !agent) return;
 
-        float speed = agent.velocity.magnitude;
-        animator.SetFloat(AnimSpeed, speed);
-    }
+        // Actual movement speed in world units
+        float current = agent.velocity.magnitude;
 
+        // Normalize against the agent's current "intended" speed
+        // (guard against divide-by-zero)
+        float max = Mathf.Max(agent.speed, 0.01f);
+
+        float normalized = Mathf.Clamp01(current / max);
+
+        // Smooth it a bit so it doesn't jitter
+        animator.SetFloat(AnimSpeed, normalized, 0.1f, Time.deltaTime);
+    }
     void SetAnimShooting(bool isShooting)
     {
         if (animator)
