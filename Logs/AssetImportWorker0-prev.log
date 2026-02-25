@@ -15,7 +15,7 @@ C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59000
+62302
 Successfully changed project path to: C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,15 +49,15 @@ C:/Users/ady/Documents/GitHub/VR-Close-Quarters-Battle-Trainer-Honours
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [24196]  Target information:
+Player connection [30352]  Target information:
 
-Player connection [24196]  * "[IP] 192.168.1.207 [Port] 0 [Flags] 2 [Guid] 3826533317 [EditorId] 3826533317 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAST724) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [30352]  * "[IP] 192.168.1.207 [Port] 0 [Flags] 2 [Guid] 2154231100 [EditorId] 2154231100 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAST724) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [24196] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [24196] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [30352] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [30352] Host joined alternative multi-casting on [225.0.0.222:34997]...
 Input System module state changed to: Initialized.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-Refreshing native plugins compatible for Editor in 41.34 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 38.73 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.62f2 (7670c08855a9)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Resources/UnitySubsystems
@@ -73,44 +73,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56472
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56236
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.012884 seconds.
-- Loaded All Assemblies, in  0.516 seconds
+Registered in 0.013319 seconds.
+- Loaded All Assemblies, in  0.532 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.358 seconds
-Domain Reload Profiling: 871ms
-	BeginReloadAssembly (154ms)
+- Finished resetting the current domain, in  0.430 seconds
+Domain Reload Profiling: 958ms
+	BeginReloadAssembly (164ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (47ms)
-	RebuildNativeTypeToScriptingClass (15ms)
-	initialDomainReloadingComplete (90ms)
+	RebuildCommonClasses (54ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (89ms)
 	LoadAllAssembliesAndSetupDomain (208ms)
-		LoadAssemblies (149ms)
+		LoadAssemblies (160ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
 		AnalyzeDomain (205ms)
 			TypeCache.Refresh (203ms)
-				TypeCache.ScanAssembly (172ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
-			ResolveRequiredComponents (0ms)
-	FinalizeReload (359ms)
+				TypeCache.ScanAssembly (170ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (430ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (294ms)
+		SetupLoadedEditorAssemblies (367ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (12ms)
-			SetLoadedEditorAssemblies (9ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (10ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (206ms)
-			ProcessInitializeOnLoadMethodAttributes (64ms)
+			ProcessInitializeOnLoadAttributes (262ms)
+			ProcessInitializeOnLoadMethodAttributes (80ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -119,7 +119,7 @@ Domain Reload Profiling: 871ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.131 seconds
+- Loaded All Assemblies, in  1.100 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
 Package Manager log level set to [2]
@@ -129,244 +129,114 @@ Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.159 seconds
-Domain Reload Profiling: 2281ms
-	BeginReloadAssembly (213ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (32ms)
-	RebuildCommonClasses (50ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (67ms)
-	LoadAllAssembliesAndSetupDomain (775ms)
-		LoadAssemblies (515ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (385ms)
-			TypeCache.Refresh (317ms)
-				TypeCache.ScanAssembly (258ms)
-			ScanForSourceGeneratedMonoScriptInfo (46ms)
-			ResolveRequiredComponents (20ms)
-	FinalizeReload (1160ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (929ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (10ms)
-			SetLoadedEditorAssemblies (4ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (147ms)
-			ProcessInitializeOnLoadAttributes (575ms)
-			ProcessInitializeOnLoadMethodAttributes (177ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (8ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 27.34 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6392 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 73 unused Assets / (373.3 KB). Loaded Objects now: 6857.
-Memory consumption went from 239.6 MB to 239.2 MB.
-Total: 7.534800 ms (FindLiveObjects: 0.977800 ms CreateObjectMapping: 0.570700 ms MarkObjects: 5.639600 ms  DeleteObjects: 0.345900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.756 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.892 seconds
-Domain Reload Profiling: 2640ms
-	BeginReloadAssembly (233ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (63ms)
-	RebuildCommonClasses (49ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (48ms)
-	LoadAllAssembliesAndSetupDomain (401ms)
-		LoadAssemblies (453ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (66ms)
-			TypeCache.Refresh (42ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (21ms)
-	FinalizeReload (1893ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (817ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (4ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (142ms)
-			ProcessInitializeOnLoadAttributes (505ms)
-			ProcessInitializeOnLoadMethodAttributes (143ms)
-			AfterProcessingInitializeOnLoad (14ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (23ms)
-Refreshing native plugins compatible for Editor in 26.04 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6861.
-Memory consumption went from 212.7 MB to 212.4 MB.
-Total: 7.583300 ms (FindLiveObjects: 1.072200 ms CreateObjectMapping: 0.619200 ms MarkObjects: 5.629300 ms  DeleteObjects: 0.261900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.807 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.990 seconds
-Domain Reload Profiling: 2789ms
-	BeginReloadAssembly (226ms)
+- Finished resetting the current domain, in  1.154 seconds
+Domain Reload Profiling: 2245ms
+	BeginReloadAssembly (205ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (52ms)
+		CreateAndSetChildDomain (31ms)
 	RebuildCommonClasses (49ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (45ms)
-	LoadAllAssembliesAndSetupDomain (462ms)
-		LoadAssemblies (464ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (760ms)
+		LoadAssemblies (516ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (120ms)
-			TypeCache.Refresh (52ms)
-				TypeCache.ScanAssembly (3ms)
-			ScanForSourceGeneratedMonoScriptInfo (47ms)
-			ResolveRequiredComponents (19ms)
-	FinalizeReload (1991ms)
+		AnalyzeDomain (363ms)
+			TypeCache.Refresh (300ms)
+				TypeCache.ScanAssembly (243ms)
+			ScanForSourceGeneratedMonoScriptInfo (43ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (1154ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (856ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (7ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (138ms)
-			ProcessInitializeOnLoadAttributes (540ms)
-			ProcessInitializeOnLoadMethodAttributes (148ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (21ms)
-Refreshing native plugins compatible for Editor in 27.35 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (341.3 KB). Loaded Objects now: 6865.
-Memory consumption went from 212.7 MB to 212.4 MB.
-Total: 6.645600 ms (FindLiveObjects: 0.960900 ms CreateObjectMapping: 0.338400 ms MarkObjects: 5.099800 ms  DeleteObjects: 0.245500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.736 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.942 seconds
-Domain Reload Profiling: 2670ms
-	BeginReloadAssembly (215ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (53ms)
-	RebuildCommonClasses (50ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (45ms)
-	LoadAllAssembliesAndSetupDomain (401ms)
-		LoadAssemblies (452ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (64ms)
-			TypeCache.Refresh (41ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (21ms)
-	FinalizeReload (1943ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (829ms)
+		SetupLoadedEditorAssemblies (931ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (9ms)
 			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (142ms)
-			ProcessInitializeOnLoadAttributes (506ms)
-			ProcessInitializeOnLoadMethodAttributes (151ms)
-			AfterProcessingInitializeOnLoad (15ms)
+			BeforeProcessingInitializeOnLoad (139ms)
+			ProcessInitializeOnLoadAttributes (583ms)
+			ProcessInitializeOnLoadMethodAttributes (181ms)
+			AfterProcessingInitializeOnLoad (14ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (18ms)
-Refreshing native plugins compatible for Editor in 26.25 ms, found 9 plugins.
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 21.90 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (341.3 KB). Loaded Objects now: 6869.
-Memory consumption went from 212.7 MB to 212.4 MB.
-Total: 6.788300 ms (FindLiveObjects: 0.838900 ms CreateObjectMapping: 0.391900 ms MarkObjects: 5.310200 ms  DeleteObjects: 0.246500 ms)
+Unloading 6393 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 73 unused Assets / (374.3 KB). Loaded Objects now: 6858.
+Memory consumption went from 239.6 MB to 239.2 MB.
+Total: 7.009600 ms (FindLiveObjects: 0.990400 ms CreateObjectMapping: 0.329800 ms MarkObjects: 5.311400 ms  DeleteObjects: 0.377100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3451d760afb5e32f41a7bc6c5562d238 -> 756216f10693d912f459f7f77dd6cf57
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/HostageFollower.cs:  -> d5e03c7880dc7c8c1212ee7c70d973e4
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.755 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  1.981 seconds
+Domain Reload Profiling: 2728ms
+	BeginReloadAssembly (243ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (61ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (47ms)
+	LoadAllAssembliesAndSetupDomain (394ms)
+		LoadAssemblies (459ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (65ms)
+			TypeCache.Refresh (42ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1981ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (849ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (139ms)
+			ProcessInitializeOnLoadAttributes (526ms)
+			ProcessInitializeOnLoadMethodAttributes (156ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+Refreshing native plugins compatible for Editor in 25.39 ms, found 9 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6238 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6862.
+Memory consumption went from 212.7 MB to 212.3 MB.
+Total: 7.299400 ms (FindLiveObjects: 1.113800 ms CreateObjectMapping: 0.283700 ms MarkObjects: 5.651600 ms  DeleteObjects: 0.249300 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -384,71 +254,23 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
 ========================================================================
-Received Prepare
-Caller must complete domain reload
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.760 seconds
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  2.113 seconds
-Domain Reload Profiling: 2866ms
-	BeginReloadAssembly (225ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (55ms)
-	RebuildCommonClasses (50ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (48ms)
-	LoadAllAssembliesAndSetupDomain (413ms)
-		LoadAssemblies (466ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (67ms)
-			TypeCache.Refresh (43ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (22ms)
-	FinalizeReload (2114ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (835ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (4ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (145ms)
-			ProcessInitializeOnLoadAttributes (512ms)
-			ProcessInitializeOnLoadMethodAttributes (151ms)
-			AfterProcessingInitializeOnLoad (14ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (24ms)
-Refreshing native plugins compatible for Editor in 34.78 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (341.3 KB). Loaded Objects now: 6873.
-Memory consumption went from 212.7 MB to 212.4 MB.
-Total: 6.003600 ms (FindLiveObjects: 0.991000 ms CreateObjectMapping: 0.331300 ms MarkObjects: 4.445400 ms  DeleteObjects: 0.235200 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+Received Import Request.
+  Time since last request: 24909.668559 seconds.
+  path: Assets/Scripts/HostageFollower.cs
+  artifactKey: Guid(0efe86fb8961017489e1f6a8657f05b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/HostageFollower.cs using Guid(0efe86fb8961017489e1f6a8657f05b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'cbc34353b09db0ee1e5fc0d088f86127') in 0.002776 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 16.309941 seconds.
+  path: Assets/Scripts/HostageFollower.cs
+  artifactKey: Guid(0efe86fb8961017489e1f6a8657f05b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/HostageFollower.cs using Guid(0efe86fb8961017489e1f6a8657f05b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '2f7727785ab3eda9b5247f1961aa5074') in 0.000789 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Prepare
 Caller must complete domain reload
@@ -459,46 +281,46 @@ Mono: successfully reloaded assembly
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  2.132 seconds
-Domain Reload Profiling: 2935ms
-	BeginReloadAssembly (262ms)
+- Finished resetting the current domain, in  1.943 seconds
+Domain Reload Profiling: 2747ms
+	BeginReloadAssembly (233ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (6ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (52ms)
-	RebuildCommonClasses (52ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (55ms)
 	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (48ms)
-	LoadAllAssembliesAndSetupDomain (424ms)
-		LoadAssemblies (515ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (450ms)
+		LoadAssemblies (457ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (65ms)
-			TypeCache.Refresh (42ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (21ms)
-	FinalizeReload (2132ms)
+		AnalyzeDomain (117ms)
+			TypeCache.Refresh (50ms)
+				TypeCache.ScanAssembly (4ms)
+			ScanForSourceGeneratedMonoScriptInfo (47ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (1944ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (873ms)
+		SetupLoadedEditorAssemblies (819ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (10ms)
-			SetLoadedEditorAssemblies (5ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (6ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (147ms)
-			ProcessInitializeOnLoadAttributes (543ms)
+			BeforeProcessingInitializeOnLoad (133ms)
+			ProcessInitializeOnLoadAttributes (503ms)
 			ProcessInitializeOnLoadMethodAttributes (154ms)
-			AfterProcessingInitializeOnLoad (13ms)
+			AfterProcessingInitializeOnLoad (14ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (26ms)
-Refreshing native plugins compatible for Editor in 27.83 ms, found 9 plugins.
+		AwakeInstancesAfterBackupRestoration (24ms)
+Refreshing native plugins compatible for Editor in 22.94 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 66 unused Assets / (341.3 KB). Loaded Objects now: 6877.
+Unloading 6238 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6866.
 Memory consumption went from 212.7 MB to 212.4 MB.
-Total: 7.360200 ms (FindLiveObjects: 1.025000 ms CreateObjectMapping: 0.566200 ms MarkObjects: 5.525600 ms  DeleteObjects: 0.242700 ms)
+Total: 6.788600 ms (FindLiveObjects: 1.021300 ms CreateObjectMapping: 0.333200 ms MarkObjects: 5.201700 ms  DeleteObjects: 0.231700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -510,8 +332,944 @@ AssetImportParameters requested are different than current active one (requested
   custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 3a8bf15f5474fc97e3483f6510660c18 -> 756216f10693d912f459f7f77dd6cf57
   custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
   custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 20.891570 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'b4e358f86e146ecbbf9719927578e8fe') in 0.002223 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.913 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  2.111 seconds
+Domain Reload Profiling: 3015ms
+	BeginReloadAssembly (225ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (54ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (562ms)
+		LoadAssemblies (567ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (120ms)
+			TypeCache.Refresh (50ms)
+				TypeCache.ScanAssembly (3ms)
+			ScanForSourceGeneratedMonoScriptInfo (49ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (2111ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (810ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (136ms)
+			ProcessInitializeOnLoadAttributes (496ms)
+			ProcessInitializeOnLoadMethodAttributes (147ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (24ms)
+Refreshing native plugins compatible for Editor in 24.17 ms, found 9 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6239 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6871.
+Memory consumption went from 212.7 MB to 212.4 MB.
+Total: 6.856300 ms (FindLiveObjects: 1.006000 ms CreateObjectMapping: 0.347800 ms MarkObjects: 5.250100 ms  DeleteObjects: 0.251600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 74d5fe14a94ad0822ae3e272b3cd41a3 -> 756216f10693d912f459f7f77dd6cf57
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/SafeZone.cs: c1aaca2b6680e9349cc5f4076652f5b5 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 16.572177 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.009735 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007337 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000632 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.020465 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000654 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.019047 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000720 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.002715 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000589 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.010525 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000679 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005991 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000657 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.008713 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000688 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004650 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000614 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007270 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000636 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007615 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000625 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007558 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000570 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007584 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000588 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007552 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000561 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007337 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000598 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.006616 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000547 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.008770 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000639 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007482 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000639 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.008576 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000627 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.007681 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000984 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004472 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000567 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.009442 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000584 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.006348 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000543 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004400 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000525 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004591 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000526 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004870 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000570 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004314 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000527 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004640 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000545 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005050 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000678 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004146 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000527 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004703 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000578 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004477 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000534 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004606 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000578 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004471 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000525 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004699 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000538 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005145 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000522 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.003742 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000530 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.003850 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000464 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.002704 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000496 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005348 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000555 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004359 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000460 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004622 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000490 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004807 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000473 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004927 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000488 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004504 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000470 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005053 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000621 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.003893 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000653 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004818 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000543 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.004542 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000517 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005244 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000499 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.003480 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000529 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.005011 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000541 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+  ERROR: Build asset version error: assets/scripts/safezone.cs in SourceAssetDB has modification time of '2026-02-25T14:41:38.6692154Z' while content on disk has modification time of '2026-02-25T14:41:48.4521219Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.775 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  1.944 seconds
+Domain Reload Profiling: 2709ms
+	BeginReloadAssembly (212ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (445ms)
+		LoadAssemblies (443ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (113ms)
+			TypeCache.Refresh (47ms)
+				TypeCache.ScanAssembly (3ms)
+			ScanForSourceGeneratedMonoScriptInfo (45ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (1944ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (844ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (8ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (148ms)
+			ProcessInitializeOnLoadAttributes (517ms)
+			ProcessInitializeOnLoadMethodAttributes (148ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+Refreshing native plugins compatible for Editor in 21.11 ms, found 9 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6239 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6875.
+Memory consumption went from 212.7 MB to 212.4 MB.
+Total: 7.128500 ms (FindLiveObjects: 0.994700 ms CreateObjectMapping: 0.527000 ms MarkObjects: 5.358700 ms  DeleteObjects: 0.247200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 74d5fe14a94ad0822ae3e272b3cd41a3 -> 756216f10693d912f459f7f77dd6cf57
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/SafeZone.cs: c1aaca2b6680e9349cc5f4076652f5b5 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 9.998194 seconds.
+  path: Assets/Scripts/SafeZone.cs
+  artifactKey: Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SafeZone.cs using Guid(49ab59a91dfb31f40a89fe430406a376) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '2ad9b69e91e212517dce926944e7d4a9') in 0.002103 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 62.753193 seconds.
+  path: Assets/Scripts/RoomController.cs
+  artifactKey: Guid(2c21697acbae7fe479d915e0cd669153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/RoomController.cs using Guid(2c21697acbae7fe479d915e0cd669153) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '688d9a7af4afd4c7ae033fbaf7bcf8dc') in 0.000724 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.808 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  2.214 seconds
+Domain Reload Profiling: 3013ms
+	BeginReloadAssembly (221ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (469ms)
+		LoadAssemblies (462ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (125ms)
+			TypeCache.Refresh (53ms)
+				TypeCache.ScanAssembly (3ms)
+			ScanForSourceGeneratedMonoScriptInfo (49ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (2214ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (986ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (144ms)
+			ProcessInitializeOnLoadAttributes (654ms)
+			ProcessInitializeOnLoadMethodAttributes (157ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (24ms)
+Script is not up to date after domain reload: guid(2c21697acbae7fe479d915e0cd669153) path("Assets/Scripts/RoomController.cs") state(2)
+Refreshing native plugins compatible for Editor in 23.58 ms, found 9 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6239 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.2 KB). Loaded Objects now: 6879.
+Memory consumption went from 212.8 MB to 212.4 MB.
+Total: 7.274600 ms (FindLiveObjects: 1.135400 ms CreateObjectMapping: 0.524700 ms MarkObjects: 5.358000 ms  DeleteObjects: 0.255300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: bf28752c9f60bebd4ec62987b5ad7d45 -> 756216f10693d912f459f7f77dd6cf57
+  custom:scripting/monoscript/fileName/RoomController.cs: b33737a50da5dc3d1f9df1ec41055bb8 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/SafeZone.cs: c1aaca2b6680e9349cc5f4076652f5b5 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.806 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  2.176 seconds
+Domain Reload Profiling: 2973ms
+	BeginReloadAssembly (218ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (51ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (48ms)
+	LoadAllAssembliesAndSetupDomain (465ms)
+		LoadAssemblies (460ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (52ms)
+				TypeCache.ScanAssembly (4ms)
+			ScanForSourceGeneratedMonoScriptInfo (48ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (2177ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (898ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (11ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (157ms)
+			ProcessInitializeOnLoadAttributes (549ms)
+			ProcessInitializeOnLoadMethodAttributes (157ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (29ms)
+Refreshing native plugins compatible for Editor in 24.75 ms, found 9 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6240 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (341.3 KB). Loaded Objects now: 6884.
+Memory consumption went from 212.8 MB to 212.4 MB.
+Total: 7.450100 ms (FindLiveObjects: 0.917300 ms CreateObjectMapping: 0.454600 ms MarkObjects: 5.808800 ms  DeleteObjects: 0.268500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 4a7c16db55c0f7f85c1905c1c1704853 -> 756216f10693d912f459f7f77dd6cf57
+  custom:scripting/monoscript/fileName/RoomController.cs: b33737a50da5dc3d1f9df1ec41055bb8 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/SafeZone.cs: c1aaca2b6680e9349cc5f4076652f5b5 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 26.013336 seconds.
+  path: Assets/Scripts/RoomController.cs
+  artifactKey: Guid(2c21697acbae7fe479d915e0cd669153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/RoomController.cs using Guid(2c21697acbae7fe479d915e0cd669153) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '70b25e519cc3e359302a0e8c0cb14e12') in 0.002282 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

@@ -2079,7 +2079,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13684,8 +13684,6 @@ GameObject:
   - component: {fileID: 1112439914}
   - component: {fileID: 1112439917}
   - component: {fileID: 1112439920}
-  - component: {fileID: 1112439919}
-  - component: {fileID: 1112439918}
   - component: {fileID: 1112439921}
   m_Layer: 9
   m_Name: TargetHostage
@@ -13801,67 +13799,6 @@ MonoBehaviour:
   enemyHitColor: {r: 0, g: 1, b: 0, a: 1}
   hostageHitColor: {r: 1, g: 0, b: 0, a: 1}
   resetTime: 0.2
---- !u!114 &1112439918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112439912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d77d966f331dd42bde4cd0d90f6b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewDistance: 15
-  viewAngle: 90
-  eyePoint: {fileID: 773190232}
-  occlusionMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  drawDebug: 1
---- !u!114 &1112439919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112439912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1113b0583fb38b4ebffca9244dc2772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1112439920}
-  player: {fileID: 1432491102}
-  perception: {fileID: 1112439918}
-  eyePoint: {fileID: 0}
-  targetHealth: {fileID: 0}
-  animator: {fileID: 0}
-  patrolPoints: []
-  patrolWait: 1
-  patrolSpeed: 1.6
-  investigateTime: 3
-  chaseSpeed: 3.2
-  attackRange: 2.5
-  attackStopDistance: 2
-  damagePerShot: 1
-  fireCooldown: 0.4
-  strafeDistance: 1.25
-  strafeChangeInterval: 0.75
-  strafeSwitchChance: 0.6
-  idealAttackDistance: 3
-  shotBlockMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  audioSource: {fileID: 0}
-  fireClip: {fileID: 0}
-  blockedClip: {fileID: 0}
-  shotLine: {fileID: 0}
-  shotLineDuration: 0.05
-  drawAttackDebugRay: 1
-  debugLineTime: 0.05
-  currentState: 0
 --- !u!195 &1112439920
 NavMeshAgent:
   m_ObjectHideFlags: 0
