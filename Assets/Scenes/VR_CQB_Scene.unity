@@ -3855,6 +3855,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 343910257}
+  - component: {fileID: 343910258}
+  - component: {fileID: 343910259}
   m_Layer: 0
   m_Name: BedroomSecondaryController
   m_TagString: Untagged
@@ -3871,12 +3873,49 @@ Transform:
   m_GameObject: {fileID: 343910256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.83, y: -1.607, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.83, y: -1.607, z: 6.4}
+  m_LocalScale: {x: 8.244492, y: 4.456, z: 4.7826247}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &343910258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343910256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &343910259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343910256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 0
+  enemiesInRoom: []
+  hostagesInRoom: []
+  roomCleared: 0
 --- !u!1 &348381334
 GameObject:
   m_ObjectHideFlags: 0
@@ -7215,6 +7254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 550616760}
   - component: {fileID: 550616761}
+  - component: {fileID: 550616762}
   m_Layer: 0
   m_Name: SafeZoneCollider
   m_TagString: Untagged
@@ -7252,12 +7292,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &550616762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550616759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ab59a91dfb31f40a89fe430406a376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  securedCount: 0
 --- !u!1 &565429424
 GameObject:
   m_ObjectHideFlags: 0
@@ -10438,6 +10491,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 820125396}
+  - component: {fileID: 820125397}
+  - component: {fileID: 820125398}
   m_Layer: 0
   m_Name: LivingRoomController
   m_TagString: Untagged
@@ -10454,12 +10509,51 @@ Transform:
   m_GameObject: {fileID: 820125395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: -1.607, z: 9.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.88, y: -1.607, z: 10.17}
+  m_LocalScale: {x: 8.104381, y: 6.0028, z: 7.5209084}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &820125397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820125395}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &820125398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820125395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 1
+  enemiesInRoom:
+  - {fileID: 974976003}
+  hostagesInRoom:
+  - {fileID: 1112439921}
+  roomCleared: 0
 --- !u!1001 &827948596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13592,6 +13686,7 @@ GameObject:
   - component: {fileID: 1112439920}
   - component: {fileID: 1112439919}
   - component: {fileID: 1112439918}
+  - component: {fileID: 1112439921}
   m_Layer: 9
   m_Name: TargetHostage
   m_TagString: Untagged
@@ -13789,6 +13884,25 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1112439921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112439912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efe86fb8961017489e1f6a8657f05b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1112439920}
+  player: {fileID: 2138479797}
+  followDistance: 1.3
+  sideOffset: 0.35
+  stopDistance: 0.9
+  repathRate: 0.15
+  state: 0
 --- !u!1 &1139300458
 GameObject:
   m_ObjectHideFlags: 0
@@ -15358,6 +15472,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273888797}
+  - component: {fileID: 1273888798}
+  - component: {fileID: 1273888799}
   m_Layer: 0
   m_Name: BedrooomPrimaryController
   m_TagString: Untagged
@@ -15374,12 +15490,49 @@ Transform:
   m_GameObject: {fileID: 1273888796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.83, y: -1.607, z: 11.95}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.83, y: -1.607, z: 12.04}
+  m_LocalScale: {x: 8.261145, y: 5.3752, z: 5.510117}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1273888798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273888796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1273888799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273888796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 0
+  enemiesInRoom: []
+  hostagesInRoom: []
+  roomCleared: 0
 --- !u!1 &1280150776
 GameObject:
   m_ObjectHideFlags: 0
@@ -18773,6 +18926,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506768574}
+  - component: {fileID: 1506768575}
+  - component: {fileID: 1506768576}
   m_Layer: 0
   m_Name: MasterBedroomController
   m_TagString: Untagged
@@ -18789,12 +18944,49 @@ Transform:
   m_GameObject: {fileID: 1506768573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: -1.607, z: 2.48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.02, y: -1.607, z: 2.63}
+  m_LocalScale: {x: 8.1520405, y: 6.1, z: 6.33973}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1506768575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506768573}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1506768576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506768573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 0
+  enemiesInRoom: []
+  hostagesInRoom: []
+  roomCleared: 0
 --- !u!1001 &1507312713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19127,6 +19319,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1534890021}
+  - component: {fileID: 1534890022}
+  - component: {fileID: 1534890023}
   m_Layer: 0
   m_Name: BathroomController
   m_TagString: Untagged
@@ -19143,12 +19337,49 @@ Transform:
   m_GameObject: {fileID: 1534890020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.83, y: -1.607, z: 1.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.83, y: -1.607, z: 1.42}
+  m_LocalScale: {x: 8.603378, y: 3.7842, z: 4.7624154}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1534890022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534890020}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1534890023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534890020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 0
+  enemiesInRoom: []
+  hostagesInRoom: []
+  roomCleared: 0
 --- !u!1 &1539593504
 GameObject:
   m_ObjectHideFlags: 0
@@ -21080,6 +21311,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720526841}
+  - component: {fileID: 1720526842}
+  - component: {fileID: 1720526843}
   m_Layer: 0
   m_Name: KitchenRoomController
   m_TagString: Untagged
@@ -21096,12 +21329,49 @@ Transform:
   m_GameObject: {fileID: 1720526840}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: -1.607, z: 17.44}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.88, y: -1.607, z: 17.15}
+  m_LocalScale: {x: 8.308031, y: 5.1896, z: 5.377464}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1945811288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1720526842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720526840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1720526843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720526840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c21697acbae7fe479d915e0cd669153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCombatRoom: 0
+  enemiesInRoom: []
+  hostagesInRoom: []
+  roomCleared: 0
 --- !u!1001 &1728322616
 PrefabInstance:
   m_ObjectHideFlags: 0
