@@ -57,6 +57,18 @@ public class MainTarget : MonoBehaviour, IDamageable
         }
     }
 
+    // Add the required IDamageable members
+    public bool IsDead
+    {
+        get { return currentHealth <= 0f; }
+    }
+
+    public void TakeDamage(float amount, Vector3 hitPoint, Vector3 hitDirection, float force)
+    {
+        // Use the existing TakeDamage(int) logic, converting float to int for compatibility
+        TakeDamage(Mathf.RoundToInt(amount));
+    }
+
     public void OnHit(RaycastHit hit)
     {
         if (mat == null) return;
