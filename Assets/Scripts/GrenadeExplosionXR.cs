@@ -16,11 +16,17 @@ public class GrenadeExplosiveXR : MonoBehaviour
     public float radius = 4.5f;
     public float maxDamage = 100f;
     public float minDamage = 10f;
-    public float lethalInnerRadius = 1.0f; // full damage inside this
+    public float lethalInnerRadius = 1.0f;
     public float impulse = 12f;
-    public LayerMask damageMask = ~0;      // what can be damaged
-    public LayerMask occlusionMask;        // walls/props that block explosion
+    public LayerMask damageMask = ~0;
+    public LayerMask occlusionMask;
     public bool useLineOfSight = true;
+
+    [Header("Audio / VFX")]
+    public AudioClip explosionClip;
+    public AudioClip beepClip;
+    public float beepStartSecondsRemaining = 0.6f;
+    public GameObject explosionVfxPrefab; // optional (particle prefab)
 
     [Header("Debug")]
     public bool drawDebug = true;
@@ -28,6 +34,7 @@ public class GrenadeExplosiveXR : MonoBehaviour
     Rigidbody rb;
     XRGrabInteractable grab;
     float fuseTimer = -1f;
+    bool beeped;
 
     void Awake()
     {
@@ -48,12 +55,12 @@ public class GrenadeExplosiveXR : MonoBehaviour
     {
         state = GrenadeState.Held;
         fuseTimer = -1f;
+        beeped = false;
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
         state = GrenadeState.Thrown;
-
         if (startFuseOnRelease)
             fuseTimer = fuseSeconds;
     }
@@ -64,6 +71,14 @@ public class GrenadeExplosiveXR : MonoBehaviour
         if (fuseTimer < 0f) return;
 
         fuseTimer -= Time.deltaTime;
+
+        // optional beep near the end
+        if (!beeped && beepClip && fuseTimer <= beepStartSecondsRemaining)
+        {
+            AudioSource.PlayClipAtPoint(beepClip, transform.position);
+            beeped = true;
+        }
+
         if (fuseTimer <= 0f)
             Explode();
     }
@@ -75,48 +90,50 @@ public class GrenadeExplosiveXR : MonoBehaviour
 
         Vector3 center = transform.position;
 
-        // Broad phase: who is inside radius?
+        // Freeze it so it doesn’t “sink” after collider off
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = true;
+
+        // Audio + VFX
+        if (explosionClip)
+            AudioSource.PlayClipAtPoint(explosionClip, center);
+
+        if (explosionVfxPrefab)
+            Instantiate(explosionVfxPrefab, center, Quaternion.identity);
+
         Collider[] hits = Physics.OverlapSphere(center, radius, damageMask, QueryTriggerInteraction.Ignore);
 
         foreach (var col in hits)
         {
-            // Find a damageable on this object or its parents
             var damageable = col.GetComponentInParent<IDamageable>();
             if (damageable == null || damageable.IsDead) continue;
 
             Vector3 closest = col.ClosestPoint(center);
             float dist = Vector3.Distance(center, closest);
 
-            // LOS check (blast blocked by walls)
             if (useLineOfSight)
             {
                 Vector3 dir = (closest - center);
                 float len = dir.magnitude;
                 if (len > 0.001f)
                 {
-                    if (Physics.Raycast(center, dir.normalized, out RaycastHit blockHit, len, occlusionMask, QueryTriggerInteraction.Ignore))
-                    {
-                        // Something blocks the explosion -> no damage
-                        continue;
-                    }
+                    if (Physics.Raycast(center, dir.normalized, out _, len, occlusionMask, QueryTriggerInteraction.Ignore))
+                        continue; // blocked
                 }
             }
 
             float dmg = ComputeDamage(dist);
             Vector3 hitDir = (closest - center).normalized;
-
-            // Apply damage + optional force info
             damageable.TakeDamage(dmg, closest, hitDir, impulse);
 
-            // Apply physics impulse if it has a rigidbody
             var hitRb = col.attachedRigidbody;
             if (hitRb != null && !hitRb.isKinematic)
                 hitRb.AddExplosionForce(impulse * 50f, center, radius, 0.3f, ForceMode.Impulse);
         }
 
-        // Optional: disable visuals/collider then destroy
         DisableGrenadeBody();
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 0.05f);
     }
 
     float ComputeDamage(float distance)
@@ -124,19 +141,16 @@ public class GrenadeExplosiveXR : MonoBehaviour
         if (distance <= lethalInnerRadius) return maxDamage;
         if (distance >= radius) return 0f;
 
-        // Smooth falloff (more “technical” than linear)
         float t = Mathf.InverseLerp(radius, lethalInnerRadius, distance);
-        float smooth = t * t * (3f - 2f * t); // SmoothStep
+        float smooth = t * t * (3f - 2f * t); // SmoothStep falloff
         return Mathf.Lerp(minDamage, maxDamage, smooth);
     }
 
     void DisableGrenadeBody()
     {
-        // Stop further collisions
         var col = GetComponent<Collider>();
         if (col) col.enabled = false;
 
-        // Hide mesh if needed
         var mr = GetComponentInChildren<MeshRenderer>();
         if (mr) mr.enabled = false;
     }
