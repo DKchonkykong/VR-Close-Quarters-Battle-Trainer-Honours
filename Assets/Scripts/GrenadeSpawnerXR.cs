@@ -21,9 +21,6 @@ public class GrenadeSpawnerXR : MonoBehaviour
     [Tooltip("Spawn the first grenade on Start?")]
     public bool spawnOnStart = true;
 
-    [Tooltip("Only allow one grenade to exist at a time?")]
-    public bool onlyOneAtATime = true;
-
     [Header("Visual Feedback (Optional)")]
     [Tooltip("Optional socket interactor to show preview/snap point.")]
     public XRSocketInteractor socket;
@@ -35,6 +32,7 @@ public class GrenadeSpawnerXR : MonoBehaviour
     private GameObject currentGrenade;
     private bool isWaitingForRespawn;
     private Coroutine respawnCoroutine;
+    private int grenadeCounter = 0; // Track how many grenades we've spawned
 
     void Start()
     {
@@ -45,20 +43,6 @@ public class GrenadeSpawnerXR : MonoBehaviour
         if (spawnOnStart)
         {
             SpawnGrenade();
-        }
-    }
-
-    void Update()
-    {
-        if (!autoRespawn) return;
-
-        // Check if current grenade was destroyed (exploded) and we're not already waiting
-        if (!isWaitingForRespawn && currentGrenade == null)
-        {
-            if (showDebugLogs)
-                Debug.Log($"[GrenadeSpawnerXR] Detected grenade is null. Starting respawn...");
-            
-            respawnCoroutine = StartCoroutine(RespawnAfterDelay());
         }
     }
 
@@ -80,24 +64,18 @@ public class GrenadeSpawnerXR : MonoBehaviour
             return;
         }
 
-        // Check if we should only have one at a time
-        if (onlyOneAtATime && currentGrenade != null)
-        {
-            if (showDebugLogs)
-                Debug.Log("[GrenadeSpawnerXR] Grenade already exists. Skipping spawn.");
-            return;
-        }
-
-        // Clean up any existing grenade
+        // Clean up any existing grenade reference
         if (currentGrenade != null)
         {
             if (showDebugLogs)
-                Debug.Log("[GrenadeSpawnerXR] Destroying existing grenade before spawning new one.");
-            Destroy(currentGrenade);
+                Debug.Log("[GrenadeSpawnerXR] Current grenade reference still exists. Clearing it.");
+            currentGrenade = null;
         }
 
         // Instantiate at spawn point
         currentGrenade = Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
+        grenadeCounter++;
+        currentGrenade.name = $"Grenade_{grenadeCounter}"; // Give it a unique name for debugging
         
         // Ensure the grenade's rigidbody is awake and ready
         var rb = currentGrenade.GetComponent<Rigidbody>();
@@ -110,13 +88,17 @@ public class GrenadeSpawnerXR : MonoBehaviour
             rb.WakeUp();
         }
 
-        // Subscribe to grenade destruction (optional enhancement)
+        // Register this spawner with the grenade
         var explosionScript = currentGrenade.GetComponent<GrenadeExplosiveXR>();
         if (explosionScript != null)
         {
-            // You could add an event here if you modify GrenadeExplosiveXR
+            explosionScript.SetSpawner(this);
             if (showDebugLogs)
-                Debug.Log("[GrenadeSpawnerXR] Found GrenadeExplosiveXR component on spawned grenade.");
+                Debug.Log($"[GrenadeSpawnerXR] Registered spawner with {currentGrenade.name}.");
+        }
+        else
+        {
+            Debug.LogWarning($"[GrenadeSpawnerXR] {currentGrenade.name} missing GrenadeExplosiveXR component!");
         }
 
         isWaitingForRespawn = false;
@@ -148,6 +130,12 @@ public class GrenadeSpawnerXR : MonoBehaviour
                 Debug.Log($"[GrenadeSpawnerXR] Grenade '{grenadeGO.name}' notified spawner of destruction.");
             
             currentGrenade = null;
+            
+            // Start respawn if auto-respawn is enabled and not already waiting
+            if (autoRespawn && !isWaitingForRespawn && respawnCoroutine == null)
+            {
+                respawnCoroutine = StartCoroutine(RespawnAfterDelay());
+            }
         }
     }
 

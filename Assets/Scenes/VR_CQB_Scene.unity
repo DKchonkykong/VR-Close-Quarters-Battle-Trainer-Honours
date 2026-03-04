@@ -1215,6 +1215,7 @@ MonoBehaviour:
   beepClip: {fileID: 8300000, guid: fdb8a3585af1e45918bc4babd167b4eb, type: 3}
   beepStartSecondsRemaining: 0.6
   explosionVfxPrefab: {fileID: 579547624}
+  vfxDuration: 2
   drawDebug: 1
 --- !u!1001 &67852946
 PrefabInstance:
@@ -30650,7 +30651,6 @@ MonoBehaviour:
   respawnDelay: 2
   autoRespawn: 1
   spawnOnStart: 1
-  onlyOneAtATime: 1
   socket: {fileID: 0}
   showDebugLogs: 1
 --- !u!1001 &2109122973

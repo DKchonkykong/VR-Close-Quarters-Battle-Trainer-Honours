@@ -27,6 +27,8 @@ public class GrenadeExplosiveXR : MonoBehaviour
     public AudioClip beepClip;
     public float beepStartSecondsRemaining = 0.6f;
     public GameObject explosionVfxPrefab;
+    [Tooltip("How long the particle effect lasts before being destroyed")]
+    public float vfxDuration = 2f;
 
     AudioSource audioSource;
     bool beepPlayed;
@@ -38,12 +40,13 @@ public class GrenadeExplosiveXR : MonoBehaviour
     XRGrabInteractable grab;
     float fuseTimer = -1f;
     bool startedBeeps;
-    private float sfxVolume;
+    private float sfxVolume = 1f;
+
+    // Reference to the spawner (set by spawner when grenade is created)
+    private GrenadeSpawnerXR spawner;
 
     void Awake()
     {
-
-
         audioSource = GetComponent<AudioSource>();
         if (!audioSource) audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 1f;  // 3D sound
@@ -60,6 +63,12 @@ public class GrenadeExplosiveXR : MonoBehaviour
     {
         grab.selectEntered.RemoveListener(OnGrab);
         grab.selectExited.RemoveListener(OnRelease);
+    }
+
+    // Called by the spawner to set itself as the parent spawner
+    public void SetSpawner(GrenadeSpawnerXR grenadeSpawner)
+    {
+        spawner = grenadeSpawner;
     }
 
     void OnGrab(SelectEnterEventArgs args)
@@ -111,7 +120,7 @@ public class GrenadeExplosiveXR : MonoBehaviour
 
         Vector3 center = transform.position;
 
-        // Freeze it so it doesn’t “sink” after collider off
+        // Freeze it so it doesn't "sink" after collider off
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
@@ -119,9 +128,28 @@ public class GrenadeExplosiveXR : MonoBehaviour
         // Audio + VFX
         if (audioSource && audioSource.isPlaying) audioSource.Stop();
 
+        // Spawn VFX and auto-destroy after duration
         if (explosionVfxPrefab)
         {
-            Instantiate(explosionVfxPrefab, center, Quaternion.identity);
+            GameObject vfx = Instantiate(explosionVfxPrefab, center, Quaternion.identity);
+            
+            // Stop particle emission after a short time, then destroy
+            ParticleSystem[] particles = vfx.GetComponentsInChildren<ParticleSystem>();
+            foreach (var ps in particles)
+            {
+                // Set particle system to stop emitting new particles
+                var main = ps.main;
+                main.loop = false;
+                
+                // Optional: reduce lifetime if particles last too long
+                if (main.duration > vfxDuration)
+                {
+                    main.duration = vfxDuration * 0.5f;
+                }
+            }
+            
+            // Destroy the VFX GameObject after the duration
+            Destroy(vfx, vfxDuration);
         }
 
         if (explosionClip)
@@ -155,23 +183,18 @@ public class GrenadeExplosiveXR : MonoBehaviour
             var hitRb = col.attachedRigidbody;
             if (hitRb != null && !hitRb.isKinematic)
                 hitRb.AddExplosionForce(impulse * 50f, center, radius, 0.3f, ForceMode.Impulse);
-
-
-            if (explosionClip != null)
-                AudioSource.PlayClipAtPoint(explosionClip, center, sfxVolume);
-
-            if (explosionVfxPrefab != null)
-                Instantiate(explosionVfxPrefab, center, Quaternion.identity);
         }
 
+        // **NOTIFY SPAWNER BEFORE DESTROYING**
+        if (spawner != null)
+        {
+            spawner.NotifyGrenadeDestroyed(gameObject);
+        }
 
-        // prevent falling through floor after collider off
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.isKinematic = true;
-
-
+        // Disable grenade body visuals
         DisableGrenadeBody();
+        
+        // Destroy grenade GameObject immediately (VFX is separate now)
         Destroy(gameObject, 0.05f);
     }
 
