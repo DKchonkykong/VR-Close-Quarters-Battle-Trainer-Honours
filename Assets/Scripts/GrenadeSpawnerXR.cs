@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
-//grenade spawner similar to magazine spawner it will respawn the grenade after it explodes this is for testing to make sure everything works correctly
 public class GrenadeSpawnerXR : MonoBehaviour
 {
     [Header("Spawning")]
@@ -16,13 +14,21 @@ public class GrenadeSpawnerXR : MonoBehaviour
     [Tooltip("Time after explosion before respawning a new grenade.")]
     public float respawnDelay = 4f;
 
+    [Header("Spawning Behavior")]
+    [Tooltip("Should the grenade respawn automatically after being destroyed?")]
+    public bool autoRespawn = true;
+
+    [Tooltip("Spawn the first grenade on Start?")]
+    public bool spawnOnStart = true;
+
     [Header("Visual Feedback (Optional)")]
     [Tooltip("Optional socket interactor to show preview/snap point.")]
     public XRSocketInteractor socket;
 
     // Runtime
-    GameObject currentGrenade;
-    bool isWaitingForRespawn;
+    private GameObject currentGrenade;
+    private bool isWaitingForRespawn;
+    private Coroutine respawnCoroutine;
 
     void Start()
     {
@@ -30,19 +36,34 @@ public class GrenadeSpawnerXR : MonoBehaviour
         if (!spawnPoint) spawnPoint = transform;
 
         // Spawn the first grenade
-        SpawnGrenade();
+        if (spawnOnStart)
+        {
+            SpawnGrenade();
+        }
     }
 
     void Update()
     {
-        // Check if current grenade was destroyed (exploded)
+        if (!autoRespawn) return;
+
+        // Check if current grenade was destroyed (exploded) and we're not already waiting
         if (!isWaitingForRespawn && currentGrenade == null)
         {
-            StartCoroutine(RespawnAfterDelay());
+            respawnCoroutine = StartCoroutine(RespawnAfterDelay());
         }
     }
 
-    void SpawnGrenade()
+    void OnDisable()
+    {
+        // Clean up coroutine if disabled
+        if (respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+    }
+
+    public void SpawnGrenade()
     {
         if (!grenadePrefab)
         {
@@ -50,52 +71,75 @@ public class GrenadeSpawnerXR : MonoBehaviour
             return;
         }
 
-        // Instantiate at spawn point
-        currentGrenade = Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
-
-        // Optional: Subscribe to explosion event for immediate respawn trigger
-        var explosionScript = currentGrenade.GetComponent<GrenadeExplosiveXR>();
-        if (explosionScript != null)
+        // Clean up any existing grenade
+        if (currentGrenade != null)
         {
-            // If your GrenadeExplosionXR has an event, hook it here
-            // For now we rely on the grenade being destroyed
+            Destroy(currentGrenade);
         }
 
-        // Optional: If using a socket interactor for visual feedback
-        //don't need this though
-        //if (socket && !socket.hasSelection)
-        //{
-        //    var grabInteractable = currentGrenade.GetComponent<XRGrabInteractable>();
-        //    if (grabInteractable)
-        //    {
-        //        // Try to snap it into the socket (visual only, not grabbed)
-        //        socket.interactionManager.SelectEnter(socket, grabInteractable);
-        //    }
-        //}
+        // Instantiate at spawn point
+        currentGrenade = Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
+        
+        // Ensure the grenade's rigidbody is awake and ready
+        var rb = currentGrenade.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.WakeUp();
+        }
 
         isWaitingForRespawn = false;
+        
+        Debug.Log($"[GrenadeSpawnerXR] Spawned grenade at {spawnPoint.position}");
     }
 
     IEnumerator RespawnAfterDelay()
     {
         isWaitingForRespawn = true;
         
-        Debug.Log($"[GrenadeSpawnerXR] Grenade exploded. Respawning in {respawnDelay}s...");
+        Debug.Log($"[GrenadeSpawnerXR] Grenade destroyed. Respawning in {respawnDelay}s...");
         
         yield return new WaitForSeconds(respawnDelay);
         
         SpawnGrenade();
+        
+        respawnCoroutine = null;
     }
 
     // Optional: Manual respawn trigger (useful for testing in editor)
     [ContextMenu("Force Respawn Grenade")]
-    void ForceRespawn()
+    public void ForceRespawn()
     {
         if (currentGrenade != null)
             Destroy(currentGrenade);
         
-        StopAllCoroutines();
+        if (respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+        
         isWaitingForRespawn = false;
         SpawnGrenade();
+    }
+
+    // Optional: Stop auto-respawning
+    [ContextMenu("Stop Auto Respawn")]
+    public void StopAutoRespawn()
+    {
+        autoRespawn = false;
+        if (respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+    }
+
+    // Optional: Resume auto-respawning
+    [ContextMenu("Resume Auto Respawn")]
+    public void ResumeAutoRespawn()
+    {
+        autoRespawn = true;
     }
 }
