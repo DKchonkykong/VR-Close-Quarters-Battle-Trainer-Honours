@@ -26,7 +26,10 @@ public class GrenadeExplosiveXR : MonoBehaviour
     public AudioClip explosionClip;
     public AudioClip beepClip;
     public float beepStartSecondsRemaining = 0.6f;
-    public GameObject explosionVfxPrefab; // optional (particle prefab)
+    public GameObject explosionVfxPrefab;
+
+    AudioSource audioSource;
+    bool beepPlayed;
 
     [Header("Debug")]
     public bool drawDebug = true;
@@ -34,10 +37,18 @@ public class GrenadeExplosiveXR : MonoBehaviour
     Rigidbody rb;
     XRGrabInteractable grab;
     float fuseTimer = -1f;
-    bool beeped;
+    bool startedBeeps;
+    private float sfxVolume;
 
     void Awake()
     {
+
+
+        audioSource = GetComponent<AudioSource>();
+        if (!audioSource) audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 1f;  // 3D sound
+        audioSource.playOnAwake = false;
+
         rb = GetComponent<Rigidbody>();
         grab = GetComponent<XRGrabInteractable>();
 
@@ -55,7 +66,8 @@ public class GrenadeExplosiveXR : MonoBehaviour
     {
         state = GrenadeState.Held;
         fuseTimer = -1f;
-        beeped = false;
+        startedBeeps = false;
+        beepPlayed = false;
     }
 
     void OnRelease(SelectExitEventArgs args)
@@ -70,13 +82,22 @@ public class GrenadeExplosiveXR : MonoBehaviour
         if (state != GrenadeState.Thrown) return;
         if (fuseTimer < 0f) return;
 
+        if (!beepPlayed && beepClip != null && fuseTimer <= beepStartSecondsRemaining)
+        {
+            beepPlayed = true;
+            AudioSource.PlayClipAtPoint(beepClip, transform.position, sfxVolume);
+        }
         fuseTimer -= Time.deltaTime;
 
-        // optional beep near the end
-        if (!beeped && beepClip && fuseTimer <= beepStartSecondsRemaining)
+        if (state == GrenadeState.Thrown && fuseTimer > 0f)
         {
-            AudioSource.PlayClipAtPoint(beepClip, transform.position);
-            beeped = true;
+            if (!startedBeeps && fuseTimer <= beepStartSecondsRemaining && beepClip)
+            {
+                startedBeeps = true;
+                audioSource.clip = beepClip;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
         }
 
         if (fuseTimer <= 0f)
@@ -96,11 +117,15 @@ public class GrenadeExplosiveXR : MonoBehaviour
         rb.isKinematic = true;
 
         // Audio + VFX
-        if (explosionClip)
-            AudioSource.PlayClipAtPoint(explosionClip, center);
+        if (audioSource && audioSource.isPlaying) audioSource.Stop();
 
         if (explosionVfxPrefab)
+        {
             Instantiate(explosionVfxPrefab, center, Quaternion.identity);
+        }
+
+        if (explosionClip)
+            AudioSource.PlayClipAtPoint(explosionClip, center, 1f);
 
         Collider[] hits = Physics.OverlapSphere(center, radius, damageMask, QueryTriggerInteraction.Ignore);
 
@@ -130,7 +155,21 @@ public class GrenadeExplosiveXR : MonoBehaviour
             var hitRb = col.attachedRigidbody;
             if (hitRb != null && !hitRb.isKinematic)
                 hitRb.AddExplosionForce(impulse * 50f, center, radius, 0.3f, ForceMode.Impulse);
+
+
+            if (explosionClip != null)
+                AudioSource.PlayClipAtPoint(explosionClip, center, sfxVolume);
+
+            if (explosionVfxPrefab != null)
+                Instantiate(explosionVfxPrefab, center, Quaternion.identity);
         }
+
+
+        // prevent falling through floor after collider off
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = true;
+
 
         DisableGrenadeBody();
         Destroy(gameObject, 0.05f);

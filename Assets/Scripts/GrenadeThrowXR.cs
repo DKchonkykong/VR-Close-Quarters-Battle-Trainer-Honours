@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -6,44 +7,50 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GrenadeThrowXR : MonoBehaviour
 {
     [Header("Throw Tuning")]
-    [Tooltip("Scales how fast the grenade is thrown (controller velocity * multiplier).")]
     public float throwMultiplier = 1.2f;
-
-    [Tooltip("Clamps max throw speed to avoid unrealistic launches.")]
     public float maxThrowSpeed = 10f;
-
-    [Tooltip("Small upward bias helps throws feel natural in VR.")]
     public float upwardBias = 0.3f;
 
-    [Header("Arc Preview (Optional)")]
+    [Header("Arc Preview")]
     public bool showArcWhileHeld = true;
     public LineRenderer arcLine;
     public int arcSteps = 30;
     public float arcTimeStep = 0.05f;
     public LayerMask arcCollisionMask = ~0;
 
-    Rigidbody rb;
-    XRGrabInteractable grab;
+    private Rigidbody rb;
+    private XRGrabInteractable grab;
 
-    bool held;
-    Transform handTransform;
+    private bool held;
+    private bool hasBeenThrown;
 
-    Vector3 lastHandPos;
-    Vector3 estimatedHandVel;
+    private Transform handTransform;
+    private InputDevice device;
+    private XRNode controllerNode = XRNode.RightHand; // default; updated on grab
+
+    private Vector3 deviceVelWorld;
+    private Vector3 deviceAngVelWorld;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         grab = GetComponent<XRGrabInteractable>();
 
+        // IMPORTANT: prevents "stuck to hand" after release
+        grab.retainTransformParent = false;
+
         if (!arcLine && showArcWhileHeld)
-            arcLine = GetComponent<LineRenderer>();
+            arcLine = GetComponentInChildren<LineRenderer>();
 
         if (arcLine)
         {
             arcLine.enabled = false;
-            // Set position count once in Awake
+            arcLine.useWorldSpace = true;
             arcLine.positionCount = arcSteps;
+            // Add these for smoother arc visuals:
+            arcLine.numCapVertices = 2;
+            arcLine.numCornerVertices = 5;
+            arcLine.alignment = LineAlignment.View;
         }
 
         grab.selectEntered.AddListener(OnGrab);
@@ -56,101 +63,163 @@ public class GrenadeThrowXR : MonoBehaviour
         grab.selectExited.RemoveListener(OnRelease);
     }
 
+    void OnEnable()
+    {
+        // Reset device tracking when script is enabled (e.g., after scene reload)
+        device = default;
+        held = false;
+        hasBeenThrown = false;
+    }
+
     void OnGrab(SelectEnterEventArgs args)
     {
         held = true;
+        hasBeenThrown = false;
 
+        // Use the interactor's attach transform as "hand"
         handTransform = args.interactorObject.GetAttachTransform(grab);
         if (!handTransform) handTransform = args.interactorObject.transform;
 
-        lastHandPos = handTransform.position;
-        estimatedHandVel = Vector3.zero;
-
-        if (arcLine && showArcWhileHeld)
+        // Determine which controller node (left/right) by checking the interactor's name
+        if (args.interactorObject is XRBaseControllerInteractor ci && ci.xrController != null)
         {
-            arcLine.enabled = true;
+            // Infer from the GameObject name (common naming: "LeftHand Controller" / "RightHand Controller")
+            string controllerName = ci.xrController.gameObject.name.ToLower();
+            if (controllerName.Contains("left"))
+            {
+                controllerNode = XRNode.LeftHand;
+            }
+            else if (controllerName.Contains("right"))
+            {
+                controllerNode = XRNode.RightHand;
+            }
+            // else keep default (RightHand)
+
+            device = InputDevices.GetDeviceAtXRNode(controllerNode);
+        }
+        else
+        {
+            // fallback: try to get any valid device
+            device = default;
+            var devices = new System.Collections.Generic.List<InputDevice>();
+            InputDevices.GetDevices(devices);
+            if (devices.Count > 0)
+            {
+                device = devices[0];
+            }
         }
 
+        // While held: it's ok if XRI drives it, but keep RB clean
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+
+        if (arcLine && showArcWhileHeld)
+            arcLine.enabled = true;
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
         held = false;
+        hasBeenThrown = true;
 
         if (arcLine) arcLine.enabled = false;
 
-        Vector3 v = estimatedHandVel * throwMultiplier;
-        v += Vector3.up * upwardBias;
-        v = Vector3.ClampMagnitude(v, maxThrowSpeed);
+        // Make sure we are NOT parented to the hand/socket anymore
+        transform.SetParent(null, true);
 
+        // Force RB back to physics mode
+        rb.isKinematic = false;
+        rb.useGravity = true;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.WakeUp();
+
+        // Apply custom throw
+        Vector3 v = deviceVelWorld * throwMultiplier + Vector3.up * upwardBias;
+        v = Vector3.ClampMagnitude(v, maxThrowSpeed);
         rb.velocity = v;
+
+        // optional spin
+        rb.angularVelocity = deviceAngVelWorld * 0.5f;
     }
 
     void Update()
     {
-        if (rb.velocity.sqrMagnitude < 0.04f && rb.angularVelocity.sqrMagnitude < 0.04f) // ~0.2 speed
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.Sleep();
-        }
-
-        if (!held || !handTransform)
+        // Only do tracking + arc when held
+        if (!held || handTransform == null)
             return;
 
-        float dt = Time.deltaTime;
-        if (dt <= 0f) return;
+        // Refresh device if it became invalid
+        if (!device.isValid)
+            device = InputDevices.GetDeviceAtXRNode(controllerNode);
 
-        Vector3 currentPos = handTransform.position;
-        Vector3 frameVel = (currentPos - lastHandPos) / dt;
+        // Get velocity in device/local space, then convert to world
+        Vector3 velLocal = Vector3.zero;
+        Vector3 angLocal = Vector3.zero;
 
-        estimatedHandVel = Vector3.Lerp(estimatedHandVel, frameVel, 0.5f);
+        if (device.isValid)
+        {
+            device.TryGetFeatureValue(CommonUsages.deviceVelocity, out velLocal);
+            device.TryGetFeatureValue(CommonUsages.deviceAngularVelocity, out angLocal);
+        }
 
-        lastHandPos = currentPos;
+        deviceVelWorld = handTransform.TransformDirection(velLocal);
+        deviceAngVelWorld = handTransform.TransformDirection(angLocal);
 
         if (arcLine && showArcWhileHeld)
         {
-            DrawArcPreview(currentPos, estimatedHandVel * throwMultiplier + Vector3.up * upwardBias);
+            if (arcLine.positionCount != arcSteps)
+                arcLine.positionCount = arcSteps;
+
+            Vector3 previewVel = deviceVelWorld * throwMultiplier + Vector3.up * upwardBias;
+            DrawArcPreview(handTransform.position, previewVel);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Optional: sleep when it fully stops after throw
+        if (hasBeenThrown && !held)
+        {
+            if (rb.velocity.sqrMagnitude < 0.01f && rb.angularVelocity.sqrMagnitude < 0.01f)
+                rb.Sleep();
         }
     }
 
     void DrawArcPreview(Vector3 startPos, Vector3 startVel)
     {
+        // Clamp the velocity for preview (same as throw)
+        Vector3 clampedVel = Vector3.ClampMagnitude(startVel, maxThrowSpeed);
+        
         Vector3 g = Physics.gravity;
         Vector3 prev = startPos;
         bool hitDetected = false;
         Vector3 hitPoint = Vector3.zero;
-        int hitIndex = 0;
 
         for (int i = 0; i < arcSteps; i++)
         {
-            // If we already hit something, fill rest with hit point
             if (hitDetected)
             {
+                // Fill remaining points at hit location
                 arcLine.SetPosition(i, hitPoint);
                 continue;
             }
 
             float t = i * arcTimeStep;
-            Vector3 p = startPos + startVel * t + 0.5f * g * t * t;
+            Vector3 p = startPos + clampedVel * t + 0.5f * g * t * t;
 
-            // Collision check between previous and current point
             if (i > 0)
             {
                 Vector3 dir = p - prev;
                 float dist = dir.magnitude;
-                if (dist > 0.0001f)
+                if (dist > 0.0001f &&
+                    Physics.Raycast(prev, dir.normalized, out RaycastHit hit, dist, arcCollisionMask, QueryTriggerInteraction.Ignore))
                 {
-                    if (Physics.Raycast(prev, dir.normalized, out RaycastHit hit, dist, arcCollisionMask, QueryTriggerInteraction.Ignore))
-                    {
-                        hitDetected = true;
-                        hitPoint = hit.point;
-                        hitIndex = i;
-                        arcLine.SetPosition(i, hitPoint);
-                        continue;
-                    }
+                    hitDetected = true;
+                    hitPoint = hit.point;
+                    arcLine.SetPosition(i, hitPoint);
+                    continue;
                 }
             }
 

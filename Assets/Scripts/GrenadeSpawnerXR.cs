@@ -62,15 +62,16 @@ public class GrenadeSpawnerXR : MonoBehaviour
         }
 
         // Optional: If using a socket interactor for visual feedback
-        if (socket && !socket.hasSelection)
-        {
-            var grabInteractable = currentGrenade.GetComponent<XRGrabInteractable>();
-            if (grabInteractable)
-            {
-                // Try to snap it into the socket (visual only, not grabbed)
-                socket.interactionManager.SelectEnter(socket, grabInteractable);
-            }
-        }
+        //don't need this though
+        //if (socket && !socket.hasSelection)
+        //{
+        //    var grabInteractable = currentGrenade.GetComponent<XRGrabInteractable>();
+        //    if (grabInteractable)
+        //    {
+        //        // Try to snap it into the socket (visual only, not grabbed)
+        //        socket.interactionManager.SelectEnter(socket, grabInteractable);
+        //    }
+        //}
 
         isWaitingForRespawn = false;
     }
