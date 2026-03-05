@@ -12,9 +12,13 @@ public class GrenadeThrowXR : MonoBehaviour
     public float maxThrowSpeed = 10f;
     public float upwardBias = 0.3f;
 
-    [Header("Velocity Tracking")]
-    [Tooltip("How many recent velocity samples to average for smoother arc prediction")]
-    public int velocitySampleCount = 5;
+    [Header("Smoothing")]
+    [Tooltip("How many recent velocity samples to keep while held.")]
+    public int velocitySampleCount = 12;
+
+    [Tooltip("Extra smoothing. Higher = smoother but slightly delayed.")]
+    [Range(0f, 1f)] public float smoothing = 0.35f;
+
     [Tooltip("Minimum velocity magnitude to show arc preview")]
     public float minVelocityForArc = 0.1f;
 
@@ -37,7 +41,9 @@ public class GrenadeThrowXR : MonoBehaviour
 
     private Vector3 deviceVelWorld;
     private Vector3 deviceAngVelWorld;
-
+    private Vector3 smoothedVelWorld;
+    private readonly Queue<Vector3> velQueue = new Queue<Vector3>();
+    
     // Velocity tracking for better arc prediction
     private Queue<Vector3> velocitySamples;
     private Vector3 averageVelocity;
@@ -77,16 +83,57 @@ public class GrenadeThrowXR : MonoBehaviour
 
     void OnEnable()
     {
-        // Reset device tracking when script is enabled (e.g., after scene reload)
+        // Reset ALL state when enabled (important for scene reload)
+        ResetState();
+    }
+
+    void Start()
+    {
+        // Additional reset on Start to ensure clean state
+        ResetState();
+    }
+
+    void ResetState()
+    {
         device = default;
         held = false;
         hasBeenThrown = false;
+        
+        // Clear all velocity tracking
+        velQueue.Clear();
+        if (velocitySamples != null) velocitySamples.Clear();
+        
+        smoothedVelWorld = Vector3.zero;
+        deviceVelWorld = Vector3.zero;
+        deviceAngVelWorld = Vector3.zero;
+        averageVelocity = Vector3.zero;
+        
+        // Reset rigidbody state
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.WakeUp();
+        }
+        
+        // Disable arc line
+        if (arcLine != null)
+        {
+            arcLine.enabled = false;
+        }
     }
 
     void OnGrab(SelectEnterEventArgs args)
     {
         held = true;
         hasBeenThrown = false;
+
+        velQueue.Clear();
+        velocitySamples.Clear();
+        smoothedVelWorld = Vector3.zero;
+        averageVelocity = Vector3.zero;
 
         // Use the interactor's attach transform as "hand"
         handTransform = args.interactorObject.GetAttachTransform(grab);
@@ -105,7 +152,20 @@ public class GrenadeThrowXR : MonoBehaviour
                 controllerNode = XRNode.RightHand;
             }
 
+            // Force device refresh
+            device = default;
             device = InputDevices.GetDeviceAtXRNode(controllerNode);
+            
+            // If device is invalid, try refreshing the device list
+            if (!device.isValid)
+            {
+                var devices = new List<InputDevice>();
+                InputDevices.GetDevicesAtXRNode(controllerNode, devices);
+                if (devices.Count > 0)
+                {
+                    device = devices[0];
+                }
+            }
         }
         else
         {
@@ -118,13 +178,11 @@ public class GrenadeThrowXR : MonoBehaviour
             }
         }
 
-        // Reset velocity tracking
-        velocitySamples.Clear();
-        averageVelocity = Vector3.zero;
-
-        // While held: it's ok if XRI drives it, but keep RB clean
+        // While held: keep RB clean
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = false;
+        rb.useGravity = false; // Turn off gravity while held
 
         if (arcLine && showArcWhileHeld)
             arcLine.enabled = true;
@@ -134,6 +192,34 @@ public class GrenadeThrowXR : MonoBehaviour
     {
         held = false;
         hasBeenThrown = true;
+
+        // Calculate average from velocity queue with safety checks
+        Vector3 avg = Vector3.zero;
+        int validSamples = 0;
+        
+        foreach (var vel in velQueue)
+        {
+            // Filter out any invalid/extreme velocities
+            if (vel.sqrMagnitude < 1000f) // Safety check for extreme values
+            {
+                avg += vel;
+                validSamples++;
+            }
+        }
+        
+        if (validSamples > 0)
+        {
+            avg /= validSamples;
+        }
+        else
+        {
+            // Fallback to averageVelocity if queue is empty or invalid
+            avg = averageVelocity;
+        }
+
+        // Use the better averaged velocity
+        Vector3 vThrow = avg * throwMultiplier + Vector3.up * upwardBias;
+        vThrow = Vector3.ClampMagnitude(vThrow, maxThrowSpeed);
 
         if (arcLine) arcLine.enabled = false;
 
@@ -146,15 +232,15 @@ public class GrenadeThrowXR : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+        
+        // Apply throw velocity
+        rb.velocity = vThrow;
+        
+        // Optional spin (with safety clamp)
+        Vector3 angVel = deviceAngVelWorld * 0.5f;
+        rb.angularVelocity = Vector3.ClampMagnitude(angVel, 10f); // Prevent extreme spinning
+        
         rb.WakeUp();
-
-        // Use the averaged velocity for more consistent throws
-        Vector3 v = averageVelocity * throwMultiplier + Vector3.up * upwardBias;
-        v = Vector3.ClampMagnitude(v, maxThrowSpeed);
-        rb.velocity = v;
-
-        // optional spin
-        rb.angularVelocity = deviceAngVelWorld * 0.5f;
     }
 
     void Update()
@@ -165,7 +251,20 @@ public class GrenadeThrowXR : MonoBehaviour
 
         // Refresh device if it became invalid
         if (!device.isValid)
+        {
             device = InputDevices.GetDeviceAtXRNode(controllerNode);
+            
+            // If still invalid, try getting devices list again
+            if (!device.isValid)
+            {
+                var devices = new List<InputDevice>();
+                InputDevices.GetDevicesAtXRNode(controllerNode, devices);
+                if (devices.Count > 0)
+                {
+                    device = devices[0];
+                }
+            }
+        }
 
         // Get velocity in device/local space, then convert to world
         Vector3 velLocal = Vector3.zero;
@@ -180,6 +279,14 @@ public class GrenadeThrowXR : MonoBehaviour
         deviceVelWorld = handTransform.TransformDirection(velLocal);
         deviceAngVelWorld = handTransform.TransformDirection(angLocal);
 
+        // Exponential smoothing (kills jitter)
+        smoothedVelWorld = Vector3.Lerp(smoothedVelWorld, deviceVelWorld, 1f - smoothing);
+
+        // Queue smoothing (kills spikes)
+        velQueue.Enqueue(smoothedVelWorld);
+        while (velQueue.Count > velocitySampleCount)
+            velQueue.Dequeue();
+
         // Track velocity samples for averaging
         velocitySamples.Enqueue(deviceVelWorld);
         if (velocitySamples.Count > velocitySampleCount)
@@ -187,10 +294,18 @@ public class GrenadeThrowXR : MonoBehaviour
 
         // Calculate average velocity
         averageVelocity = Vector3.zero;
+        int count = 0;
         foreach (var vel in velocitySamples)
-            averageVelocity += vel;
-        if (velocitySamples.Count > 0)
-            averageVelocity /= velocitySamples.Count;
+        {
+            // Filter extreme values
+            if (vel.sqrMagnitude < 1000f)
+            {
+                averageVelocity += vel;
+                count++;
+            }
+        }
+        if (count > 0)
+            averageVelocity /= count;
 
         if (arcLine && showArcWhileHeld)
         {

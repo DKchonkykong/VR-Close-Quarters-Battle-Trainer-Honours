@@ -132,23 +132,17 @@ public class GrenadeExplosiveXR : MonoBehaviour
         if (explosionVfxPrefab)
         {
             GameObject vfx = Instantiate(explosionVfxPrefab, center, Quaternion.identity);
-            
-            // Stop particle emission after a short time, then destroy
-            ParticleSystem[] particles = vfx.GetComponentsInChildren<ParticleSystem>();
+
+            var particles = vfx.GetComponentsInChildren<ParticleSystem>(true);
             foreach (var ps in particles)
             {
-                // Set particle system to stop emitting new particles
                 var main = ps.main;
                 main.loop = false;
-                
-                // Optional: reduce lifetime if particles last too long
-                if (main.duration > vfxDuration)
-                {
-                    main.duration = vfxDuration * 0.5f;
-                }
+
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                ps.Play(true);
             }
-            
-            // Destroy the VFX GameObject after the duration
+
             Destroy(vfx, vfxDuration);
         }
 
