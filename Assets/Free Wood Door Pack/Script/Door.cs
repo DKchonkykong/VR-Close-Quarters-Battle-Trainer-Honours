@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace DoorScript
 {
@@ -14,9 +14,17 @@ namespace DoorScript
         private bool isMoving = false;
         private Quaternion targetRotation;
 
+        NavMeshObstacle obstacle;
+        Collider doorCollider;
+
         private void Start()
         {
             targetRotation = transform.localRotation;
+
+            obstacle = GetComponent<NavMeshObstacle>();
+            doorCollider = GetComponent<Collider>();
+
+            UpdateDoorBlocking();
         }
 
         public void OpenDoor()
@@ -26,8 +34,20 @@ namespace DoorScript
                 isOpen = !isOpen;
                 float angle = isOpen ? openAngle : closeAngle;
                 targetRotation = Quaternion.Euler(0, angle, 0);
+
+                UpdateDoorBlocking();
+
                 StartCoroutine(RotateDoor());
             }
+        }
+
+        void UpdateDoorBlocking()
+        {
+            if (obstacle)
+                obstacle.enabled = !isOpen;
+
+            if (doorCollider)
+                doorCollider.enabled = !isOpen;
         }
 
         private IEnumerator RotateDoor()
@@ -36,7 +56,10 @@ namespace DoorScript
 
             while (Quaternion.Angle(transform.localRotation, targetRotation) > 0.1f)
             {
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * openSpeed);
+                transform.localRotation = Quaternion.Slerp(
+                    transform.localRotation,
+                    targetRotation,
+                    Time.deltaTime * openSpeed);
                 yield return null;
             }
 
