@@ -14,40 +14,46 @@ namespace DoorScript
         private bool isMoving = false;
         private Quaternion targetRotation;
 
-        NavMeshObstacle obstacle;
-        Collider doorCollider;
+        private NavMeshObstacle obstacle;
+        private Collider[] doorColliders;
+
+        public bool IsOpen => isOpen;
 
         private void Start()
         {
             targetRotation = transform.localRotation;
 
             obstacle = GetComponent<NavMeshObstacle>();
-            doorCollider = GetComponent<Collider>();
+            doorColliders = GetComponents<Collider>();
 
             UpdateDoorBlocking();
         }
 
         public void OpenDoor()
         {
-            if (!isMoving)
-            {
-                isOpen = !isOpen;
-                float angle = isOpen ? openAngle : closeAngle;
-                targetRotation = Quaternion.Euler(0, angle, 0);
+            if (isMoving) return;
 
-                UpdateDoorBlocking();
+            isOpen = !isOpen;
+            float angle = isOpen ? openAngle : closeAngle;
+            targetRotation = Quaternion.Euler(0f, angle, 0f);
 
-                StartCoroutine(RotateDoor());
-            }
+            UpdateDoorBlocking();
+            StartCoroutine(RotateDoor());
         }
 
-        void UpdateDoorBlocking()
+        private void UpdateDoorBlocking()
         {
-            if (obstacle)
+            if (obstacle != null)
                 obstacle.enabled = !isOpen;
 
-            if (doorCollider)
-                doorCollider.enabled = !isOpen;
+            if (doorColliders != null)
+            {
+                foreach (var col in doorColliders)
+                {
+                    if (col != null)
+                        col.enabled = !isOpen;
+                }
+            }
         }
 
         private IEnumerator RotateDoor()
@@ -59,7 +65,8 @@ namespace DoorScript
                 transform.localRotation = Quaternion.Slerp(
                     transform.localRotation,
                     targetRotation,
-                    Time.deltaTime * openSpeed);
+                    Time.deltaTime * openSpeed
+                );
                 yield return null;
             }
 

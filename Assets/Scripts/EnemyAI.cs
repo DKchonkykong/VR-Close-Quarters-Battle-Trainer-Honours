@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.XR.CoreUtils;
+using DoorScript;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -131,6 +132,22 @@ public class EnemyAI : MonoBehaviour
 
         SetAnimShooting(false);
     }
+    void TryOpenDoorAhead()
+    {
+        Vector3 origin = eyePoint ? eyePoint.position : transform.position + Vector3.up * 1.5f;
+        Vector3 direction = transform.forward;
+        float rayDistance = 2.0f; // Adjust as needed for door reach
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, rayDistance))
+        {
+            // Check if the hit object has a door script/component
+            var door = hit.collider.GetComponent<Door>();
+            if (door != null)
+            {
+                door.OpenDoor();
+            }
+        }
+    }
 
     void Update()
     {
@@ -186,7 +203,7 @@ public class EnemyAI : MonoBehaviour
 
                 if (!canSee) { SetState(State.Investigate); break; }
                 if (distToPlayer <= attackRange) { SetState(State.Attack); break; }
-
+                TryOpenDoorAhead();
                 agent.SetDestination(player.position);
                 FaceTarget(player.position);
                 break;

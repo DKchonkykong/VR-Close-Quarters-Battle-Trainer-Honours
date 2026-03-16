@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104
+  controlID: 43
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 0
     width: 547
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -419,7 +419,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -427,16 +427,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\ady\Documents\GitHub\VR-Close-Quarters-Battle-Trainer-Honours
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 173}
-    m_SelectedIDs: a2a40000
-    m_LastClickedID: 42146
-    m_ExpandedIDs: 000000002ca200002ea2000030a2000032a2000034a2000036a2000038a200003aa200003ca200003ea2000040a2000042a2000044a2000046a2000048a200004aa200004ca200004ea2000050a2000052a2000054a2000056a2000058a200005aa200005ca200005ea2000060a2000062a2000064a2000066a2000068a200006aa200006ca200006ea2000070a2000072a2000074a2000076a2000078a200007aa200007ca200007ea2000080a2000082a2000098a4000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: caa40000
+    m_LastClickedID: 42186
+    m_ExpandedIDs: 0000000074a4000076a4000078a400007aa400007ca400007ea4000080a4000082a4000084a4000086a4000088a400008aa400008ca400008ea4000090a4000092a4000094a4000096a4000098a400009aa400009ca400009ea40000a0a40000a2a40000a4a40000a6a40000a8a40000aaa40000aca40000aea40000b0a40000b2a40000b4a40000b6a40000b8a40000baa40000bca40000bea40000c0a40000c2a40000c4a40000c6a40000c8a40000caa40000caa60000f0a6000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -464,7 +464,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002ca200002ea2000030a2000032a2000034a2000036a2000038a200003aa200003ca200003ea2000040a2000042a2000044a2000046a2000048a200004aa200004ca200004ea2000050a2000052a2000054a2000056a2000058a200005aa200005ca200005ea2000060a2000062a2000064a2000066a2000068a200006aa200006ca200006ea2000070a2000072a2000074a2000076a2000078a200007aa200007ca200007ea2000080a2000082a20000
+    m_ExpandedIDs: 0000000074a4000076a4000078a400007aa400007ca400007ea4000080a4000082a4000084a4000086a4000088a400008aa400008ca400008ea4000090a4000092a4000094a4000096a4000098a400009aa400009ca400009ea40000a0a40000a2a40000a4a40000a6a40000a8a40000aaa40000aca40000aea40000b0a40000b2a40000b4a40000b6a40000b8a40000baa40000bca40000bea40000c0a40000c2a40000c4a40000c6a40000c8a40000caa40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300002e8300000000000062750000bc75000026760000f07e00004e84000052840000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -606,9 +606,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ead20000
-      m_LastClickedID: 53994
-      m_ExpandedIDs: 56b8fffffeb8ffff16d7ffff2afbffff567e0000ead20000ccda0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 7485feff1c86feff36a4feff02b5feffaab5feffc4d3feffbef4feff66f5feff6413ffff7027ffff1428ffff2e46ffffea8dffff8e8effffa4acffff04e3ffff08e5ffffbcf1ffff96f6ffff2afbffffea7a00008c7b00002cde0000f6de000070e100002af40000da1f0100522201001c2301009625010092270100bc270100f62701002a280100c22a0100ba2b0100262d01005a2d0100662f01002c33010050380100d88e0100509101001a9201009494010090960100ba960100f4960100c0990100b89a0100589c01002aa2010074fc0100983f0200a0400200d8830200e084020008c40200dcce0200fed8020006da0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1015,9 +1015,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.11383918, y: 0.68750775, z: 7.321957}
+    m_Target: {x: -2.1720533, y: 15.043216, z: 5.727426}
     speed: 2
-    m_Value: {x: 0.11383918, y: 0.68750775, z: 7.321957}
+    m_Value: {x: -2.1720533, y: 15.043216, z: 5.727426}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1063,9 +1063,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.04490743, y: -0.94601214, z: 0.14969331, w: -0.28454664}
+    m_Target: {x: 0.037568793, y: -0.8514015, z: 0.5201054, w: 0.061056547}
     speed: 2
-    m_Value: {x: -0.04490001, y: -0.94585586, z: 0.14966857, w: -0.28449965}
+    m_Value: {x: 0.037558775, y: -0.85117453, z: 0.5199668, w: 0.061040267}
   m_Size:
     m_Target: 0.056603394
     speed: 2

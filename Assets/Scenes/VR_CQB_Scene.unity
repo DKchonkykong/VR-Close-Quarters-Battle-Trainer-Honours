@@ -8255,6 +8255,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: 0d14cbb38e9cb274aa98f316acbd10cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: 0d14cbb38e9cb274aa98f316acbd10cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.077
@@ -18037,7 +18041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 791293270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EyePointPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18693,7 +18697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832575519}
   - component: {fileID: 832575518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Global Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21181,7 +21185,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 974975994}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -22781,8 +22785,8 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: -1}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 6144
-  m_UseGeometry: 1
+    m_Bits: 22528
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -22790,7 +22794,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8d5b50879c4e39d4a815cd6cad68f7da, type: 2}
   m_BuildHeightMesh: 0
@@ -23945,7 +23949,7 @@ Transform:
   m_GameObject: {fileID: 1112439912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.453, y: -0.582, z: 9.998}
+  m_LocalPosition: {x: -6.453, y: -0.582, z: 12.03}
   m_LocalScale: {x: 0.6597582, y: 1.8, z: 0.5669}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24052,12 +24056,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 1112439912}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.25
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -25049,7 +25053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1187260117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25217,6 +25221,10 @@ PrefabInstance:
     - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalScale.x
@@ -29479,7 +29487,7 @@ GameObject:
   - component: {fileID: 1432491104}
   - component: {fileID: 1432491103}
   - component: {fileID: 1432491106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -29772,6 +29780,10 @@ PrefabInstance:
     - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalScale.x
@@ -33190,6 +33202,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -33876,6 +33892,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -33944,6 +33964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: openAngle
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410976665799846, guid: e3fe7ada7ca25d840ae444bd16f0f4d9,
+        type: 3}
+      propertyPath: doorMask.m_Bits
+      value: 16384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35393,6 +35418,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.254
@@ -35960,6 +35989,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.44
@@ -36020,6 +36053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: openAngle
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410976665799846, guid: e3fe7ada7ca25d840ae444bd16f0f4d9,
+        type: 3}
+      propertyPath: doorMask.m_Bits
+      value: 16384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36292,6 +36330,10 @@ PrefabInstance:
     - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36681,6 +36723,10 @@ PrefabInstance:
     - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975789379832626, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227889827151656, guid: e3fe7ada7ca25d840ae444bd16f0f4d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41959,7 +42005,7 @@ GameObject:
   - component: {fileID: 2138479799}
   - component: {fileID: 2138479798}
   - component: {fileID: 2138479801}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

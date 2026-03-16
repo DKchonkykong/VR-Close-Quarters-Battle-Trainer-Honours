@@ -4,22 +4,24 @@ using Unity.XR.CoreUtils;
 
 public class HostageFollower : MonoBehaviour
 {
-    public enum State { Waiting, Following, Secured, Dead }
+    public enum State { Waiting, Following, MovingToSafeZone, Secured, Dead }
 
     [Header("Refs")]
     public NavMeshAgent agent;
-    public Transform player; // XR camera or rig target
+    public Transform player;
 
     [Header("Follow")]
-    public float followDistance = 1.3f;     // how far behind player
-    public float sideOffset = 0.35f;        // slight side offset so they don't collide
-    public float stopDistance = 0.9f;       // when close enough, stop
-    public float repathRate = 0.15f;        // how often to update destination
+    public float followDistance = 1.3f;
+    public float sideOffset = 0.35f;
+    public float stopDistance = 0.4f;
+    public float repathRate = 0.15f;
 
     [Header("Debug")]
     public State state = State.Waiting;
 
     float repathTimer;
+    Vector3 safeZoneTarget;
+    bool hasSafeZoneTarget;
 
     void Awake()
     {
@@ -40,14 +42,33 @@ public class HostageFollower : MonoBehaviour
 
     void Update()
     {
-        if (state != State.Following) return;
-        if (!agent || !agent.isOnNavMesh || !player) return;
+        if (!agent || !agent.isOnNavMesh) return;
+
+        switch (state)
+        {
+            case State.Following:
+                UpdateFollow();
+                break;
+
+            case State.MovingToSafeZone:
+                UpdateMoveToSafeZone();
+                break;
+
+            case State.Secured:
+            case State.Waiting:
+            case State.Dead:
+                break;
+        }
+    }
+
+    void UpdateFollow()
+    {
+        if (!player) return;
 
         repathTimer -= Time.deltaTime;
         if (repathTimer > 0f) return;
         repathTimer = repathRate;
 
-        // Follow point behind the player
         Vector3 behind = -player.forward;
         behind.y = 0f;
         behind.Normalize();
@@ -60,20 +81,64 @@ public class HostageFollower : MonoBehaviour
                             + behind * followDistance
                             + right * sideOffset;
 
-        agent.SetDestination(targetPos);
+        if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+        {
+            agent.isStopped = false;
+            agent.SetDestination(hit.position);
+        }
+    }
+
+    void UpdateMoveToSafeZone()
+    {
+        if (!hasSafeZoneTarget) return;
+
+        repathTimer -= Time.deltaTime;
+        if (repathTimer > 0f) return;
+        repathTimer = repathRate;
+
+        if (NavMesh.SamplePosition(safeZoneTarget, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+        {
+            agent.isStopped = false;
+            agent.SetDestination(hit.position);
+        }
+
+        // If close enough, lock hostage in secured state
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.1f)
+        {
+            Secure();
+        }
     }
 
     public void StartFollowing()
     {
         if (state == State.Secured || state == State.Dead) return;
+
         state = State.Following;
-        if (agent) agent.isStopped = false;
+        hasSafeZoneTarget = false;
+
+        if (agent)
+            agent.isStopped = false;
+    }
+
+    public void MoveToSafeZone(Vector3 target)
+    {
+        if (state == State.Secured || state == State.Dead) return;
+
+        state = State.MovingToSafeZone;
+        safeZoneTarget = target;
+        hasSafeZoneTarget = true;
+        repathTimer = 0f;
+
+        if (agent)
+            agent.isStopped = false;
     }
 
     public void Secure()
     {
         if (state == State.Secured || state == State.Dead) return;
+
         state = State.Secured;
+        hasSafeZoneTarget = false;
 
         if (agent)
         {
@@ -85,11 +150,12 @@ public class HostageFollower : MonoBehaviour
     public void KillHostage()
     {
         state = State.Dead;
+        hasSafeZoneTarget = false;
+
         if (agent)
         {
             agent.ResetPath();
             agent.isStopped = true;
         }
-        // optional: play animation / disable visuals
     }
 }
